@@ -1,15 +1,19 @@
 package com.codari.arena.players.combatants;
 
 import com.codari.api.util.PlayerReference;
+import com.codari.arena.Arena;
+import com.codari.arena.players.role.Role;
 /**
  * In game representation of a player. This is how the {@link Arena} and any arena-related object will reference the player.
  * 
- *  A combatant will store a reference to the {@link Arena} they are playing in and a {@link TeamColor} for the team they are on. 
+ *  A combatant will store a reference to the {@link Arena} they are playing in and a {@link TeamColor} for the team they are on.
+ *  It has a reference to the {@link CombatantStats} as well.
  *  They will also store a reference to a {@link Role} that this combatant currently has. 
  * @author Ryan
  *
  */
 public interface Combatant {
+	
 	/**
 	 * This will get the {@Link PlayerReference} Associated with this Combatant.
 	 * 
@@ -17,7 +21,35 @@ public interface Combatant {
 	 * @return The PlayerReference for this combatant. 
 	 */
 	public PlayerReference getPlayerReference();
-	public CombatantStats getData();
-	public void reloadData();
-	public void saveData();
+	
+	/**
+	 * Reference to the Stats for this player.
+	 * 
+	 * @return The {@link CombatantStats} for this particular combatant. 
+	 */
+	public CombatantStats getStats();
+	
+	/**
+	 * Allows the retrieval of the role for a current match this combatant is in. 
+	 * 
+	 * @return The role this combatant is currently playing if they're in a game,
+	 * 	otherwise the Non-Competing role will be used. 
+	 */
+	public Role getRole();
+	
+	/**
+	 * Will return a string value associated with the {@link Arena} this Combatant is currently playing in.
+	 *  
+	 * @return The string for the Arena the Combatant is currently in. 
+	 */
+	public String getArenaName();
+	
+	/**
+	 * Sends this combatant to an {@link Arena} with a specified {@link Role}. 
+	 * 
+	 * @param arena The Arena to send this combatant to. 
+	 * @param role The Role for this combatant to play as.
+	 * @return True if the player was successfully added to the Arena, false otherwise. 
+	 */
+	public boolean sendToArena(Arena arena, Role role);
 }
