@@ -1,4 +1,4 @@
-package com.codari.arena.combatants;
+package com.codari.arena.combatants.combatants;
 
 public class CombatantDataException extends RuntimeException {
 	private static final long serialVersionUID = -2512936718914848823L;
