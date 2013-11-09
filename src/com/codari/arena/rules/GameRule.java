@@ -1,6 +1,6 @@
 package com.codari.arena.rules;
 
-import com.codari.arena.Time;
+import com.codari.api.util.Tick;
 
 /**
  * Game rules will be static objects inserted into the time line upon registration. They will define passive actions, 
@@ -25,7 +25,7 @@ public interface GameRule {
 	 * @param after If this true, then the win condition will be valid after the time, otherwise it will be valid before the time. 
 	 * @return True if the win condition can possibly be met before the end of the game, false otherwise. 
 	 */
-	public boolean addWinCondition(WinCondition winCondition, Time time, boolean after);
+	public boolean addWinCondition(WinCondition winCondition, Tick time, boolean after);
 	/**
 	 * Removes the provided win condition from the current selection of win conditions.
 	 * 
@@ -37,7 +37,7 @@ public interface GameRule {
 	 * 
 	 * @param time The time at which to end. 
 	 */
-	public void setMatchDuration(Time time);
+	public void setMatchDuration(Tick time);
 	/**
 	 * Set the duration of the match to be infinite. If a Time is already registered, it will be removed.
 	 * 

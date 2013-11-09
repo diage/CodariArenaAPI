@@ -1,5 +1,6 @@
 package com.codari.arena;
 
+import com.codari.api.util.Tick;
 import com.codari.arena.objects.DelayedPersistentObject;
 import com.codari.arena.objects.FixedSpawnableObject;
 import com.codari.arena.objects.ImmediatePersistentObject;
@@ -35,7 +36,7 @@ public interface Arena {
 	 * @return True if the group was successfully made. 
 	 * 	False if the name was already taken or the initial time is after the end of the game.  
 	 */
-	public boolean createRandomTimelineGroup(String groupName, Time time);
+	public boolean createRandomTimelineGroup(String groupName, Tick time);
 	/**
 	 * Create a group for the time line to randomly select a {@Link SpawnableObject}. 
 	 * 		This will spawn at the provided time and 
@@ -52,7 +53,7 @@ public interface Arena {
 	 * @return True if the group was successfully made. 
 	 * 	False if the name was already taken or the initial time is after the end of the game.   
 	 */
-	public boolean createRandomTimelineGroup(String groupName, Time time, Time repeatTime);
+	public boolean createRandomTimelineGroup(String groupName, Tick time, Tick repeatTime);
 	
 		//*****Random Spawnable Registration*****//
 	/**
@@ -79,7 +80,7 @@ public interface Arena {
 	 * @return True if it was successful in adding.
 	 * 	False if the time will be after the end of the match or otherwise unsuccessful. 
 	 */
-	public boolean registerFixedSpawnable(FixedSpawnableObject object, Time time);
+	public boolean registerFixedSpawnable(FixedSpawnableObject object, Tick time);
 	/**
 	 * Register a {@Link FixedSpawnableObject} at the given time which will repeat until the game ends.
 	 * 
@@ -91,7 +92,7 @@ public interface Arena {
 	 * @return True if it was successful in adding. 
 	 * 	False if the time will be after the end of the match or otherwise unsuccessful.  
 	 */
-	public boolean registerFixedSpawnable(FixedSpawnableObject object, Time time, Time repeatTime);
+	public boolean registerFixedSpawnable(FixedSpawnableObject object, Tick time, Tick repeatTime);
 	
 		//*****Persistent Object Registration*****//
 	/**
@@ -116,7 +117,7 @@ public interface Arena {
 	 * 	If false, all interactions will still be acted upon.
 	 * @return True if successful, False otherwise.   
 	 */
-	public boolean registerPersistent(DelayedPersistentObject object, Time time, boolean override);
+	public boolean registerPersistent(DelayedPersistentObject object, Tick time, boolean override);
 	
 		//*****Game Rule Registration*****//
 	/**
