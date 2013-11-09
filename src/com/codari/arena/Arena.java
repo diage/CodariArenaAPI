@@ -16,6 +16,8 @@ import com.codari.arena.rules.GameRule;
  *
  */
 public interface Arena {
+	public String getName();
+	
 	//-----Registrations-----//
 	
 		//*****Group Registration*****//
