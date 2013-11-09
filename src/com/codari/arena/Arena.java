@@ -1,10 +1,10 @@
 package com.codari.arena;
 
 import com.codari.api.util.Tick;
-import com.codari.arena.objects.DelayedPersistentObject;
-import com.codari.arena.objects.FixedSpawnableObject;
-import com.codari.arena.objects.ImmediatePersistentObject;
-import com.codari.arena.objects.RandomSpawnableObject;
+import com.codari.arena.objects.persistant.DelayedPersistentObject;
+import com.codari.arena.objects.persistant.ImmediatePersistentObject;
+import com.codari.arena.objects.spawnable.FixedSpawnableObject;
+import com.codari.arena.objects.spawnable.RandomSpawnableObject;
 import com.codari.arena.rules.GameRule;
 
 /**

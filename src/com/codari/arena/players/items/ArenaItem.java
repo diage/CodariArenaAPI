@@ -1,4 +1,4 @@
-package com.codari.arena.combatants.items;
+package com.codari.arena.players.items;
 
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.inventory.ItemStack;

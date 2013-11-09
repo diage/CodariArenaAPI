@@ -3,7 +3,7 @@ package com.codari.arena;
 import org.bukkit.OfflinePlayer;
 
 import com.codari.api.util.PlayerReference;
-import com.codari.arena.combatants.combatants.Combatant;
+import com.codari.arena.players.combatants.Combatant;
 
 public interface ArenaManager {
 	public Combatant getCombatant(String name);

@@ -1,4 +1,4 @@
-package com.codari.arena.objects;
+package com.codari.arena.objects.persistant;
 /**
  * A specialized type of {@Link ArenaObject}.
  *  This could be interacted with at any given time that the {@Link Arena} is active.

@@ -1,9 +1,9 @@
-package com.codari.arena.combatants.teams;
+package com.codari.arena.players.teams;
 
 import java.util.List;
 
 import com.codari.arena.Arena;
-import com.codari.arena.combatants.combatants.Combatant;
+import com.codari.arena.players.combatants.Combatant;
 /**
  * Represents the team in which a {@link Combatants} is on when inside of an {@Link Arena}. 
  * 

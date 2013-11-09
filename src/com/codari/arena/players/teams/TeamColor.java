@@ -1,4 +1,4 @@
-package com.codari.arena.combatants.teams;
+package com.codari.arena.players.teams;
 /**
  * Enumeration used to differentiate between {@Link Team}s.
  * @author Ryan

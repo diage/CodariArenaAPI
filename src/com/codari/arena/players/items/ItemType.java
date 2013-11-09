@@ -1,4 +1,4 @@
-package com.codari.arena.combatants.items;
+package com.codari.arena.players.items;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

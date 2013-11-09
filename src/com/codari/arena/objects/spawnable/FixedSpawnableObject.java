@@ -1,4 +1,4 @@
-package com.codari.arena.objects;
+package com.codari.arena.objects.spawnable;
 /**
  * A specialized type of {@Link ArenaObject}.
  * 	This Object will spawn every time it is told to spawn based on a fixed schedule.

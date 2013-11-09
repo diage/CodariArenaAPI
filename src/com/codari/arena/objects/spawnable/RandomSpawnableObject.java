@@ -1,4 +1,4 @@
-package com.codari.arena.objects;
+package com.codari.arena.objects.spawnable;
 /**
  * Random spawnable objects are grouped together and registered under a single group name. 
  * 

@@ -1,4 +1,4 @@
-package com.codari.arena.combatants.combatants;
+package com.codari.arena.players.combatants;
 
 import com.codari.api.util.PlayerReference;
 

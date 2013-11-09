@@ -1,4 +1,6 @@
-package com.codari.arena.objects;
+package com.codari.arena.objects.spawnable;
+
+import com.codari.arena.objects.ArenaObject;
 
 
 /**
