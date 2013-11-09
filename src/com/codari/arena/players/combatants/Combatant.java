@@ -52,4 +52,9 @@ public interface Combatant {
 	 * @return True if the player was successfully added to the Arena, false otherwise. 
 	 */
 	public boolean sendToArena(Arena arena, Role role);
+	/**
+	 * Sends this Combatant back to a Non-Competing {@link Role} and removes this from the {@link Arena}.
+	 * @return True if the player was successfully removed from an Arena, false otherwise. 
+	 */
+	public boolean leaveArena();
 }
