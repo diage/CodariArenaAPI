@@ -14,10 +14,10 @@ import org.apache.commons.lang3.Validate;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
-public class CodariIO {
+public final class CodariIO {
 	//-----Static Methods-----//
 	public static void serialize(Object obj, OutputStream out) throws IOException {
-		Validate.notNull(out, "the OutputStream must not be null");
+		Validate.notNull(out, "OutputStream must not be null");
 		try (BukkitObjectOutputStream objectOut = new BukkitObjectOutputStream(out)) {
 			objectOut.writeObject(obj);
 		}
@@ -38,7 +38,7 @@ public class CodariIO {
 	}
 	
 	public static Object deserialize(InputStream in) throws IOException, ClassNotFoundException {
-		Validate.notNull(in, "the InputStream must not be null");
+		Validate.notNull(in, "InputStream must not be null");
 		try (BukkitObjectInputStream objectIn = new BukkitObjectInputStream(in)) {
 			return objectIn.readObject();
 		}
@@ -51,7 +51,7 @@ public class CodariIO {
 	}
 	
 	public static Object deserialize(byte[] byteDataIn) throws IOException, ClassNotFoundException {
-		Validate.notNull(byteDataIn, "the byte[] must not be null");
+		Validate.notNull(byteDataIn, "byte[] must not be null");
 		try(ByteArrayInputStream dataIn = new ByteArrayInputStream(byteDataIn)) {
 			return deserialize(dataIn);
 		}
@@ -69,4 +69,7 @@ public class CodariIO {
 			writer.write("");
 		}
 	}
+	
+	//-----Constructor-----//
+	private CodariIO(){}
 }

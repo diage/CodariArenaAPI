@@ -30,8 +30,8 @@ public interface Team {
 	/**
 	 * Gets you a list of every {@link Combatant} not counting the {@Link Combatant} provided. 
 	 * 
-	 * 	For this to return a meaningful {@link List}, the provided {@Link Combatant} must be from 
-	 * 	this team. 
+	 * For this to return a meaningful {@link List}, the provided {@Link Combatant} must be from 
+	 * this team. 
 	 * @param combatant A Combatant from the team.
 	 * @return A {@link List} of every other {@link Combatant} other than the provided team mate. 
 	 */

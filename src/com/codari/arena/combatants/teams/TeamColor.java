@@ -6,5 +6,6 @@ package com.codari.arena.combatants.teams;
  */
 public enum TeamColor {
 	RED,
-	BLUE;
+	BLUE,
+	NONE;
 }
