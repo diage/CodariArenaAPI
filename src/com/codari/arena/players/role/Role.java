@@ -12,7 +12,7 @@ public interface Role {
 	
 	/**
 	 * Retrieves the skill for this role. 
-	 * @return The {@link Skill} for this player. 
+	 * @return The {@link Skill} associated for the role in question. 
 	 */
 	public Skill getSkill();
 }

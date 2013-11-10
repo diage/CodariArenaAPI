@@ -8,6 +8,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.SerializableAs;
 /**
  * The enumeration primarily used to represent Item Types. 
+ * 
  * @author Soren
  *
  */
@@ -78,6 +79,11 @@ public enum ItemType implements ConfigurationSerializable {
 	}
 	
 	//-----Public Methods-----//
+	/**
+	 * The indicator is the block which will show what type this item is. 
+	 * 
+	 * @return The {@link Material} type of the indicator for this item. 
+	 */
 	public Material getIndicator() {
 		return this.indicator;
 	}

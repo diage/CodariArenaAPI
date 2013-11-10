@@ -59,4 +59,13 @@ public interface Combatant {
 	 * @return True if the player was successfully removed from an Arena, false otherwise. 
 	 */
 	public boolean leaveArena();
+	
+	/**
+	 * Method to swap the {@link Role} of this combatant while in an {@link Arena}. This method should not be used to set a 
+	 * 	{@link Role} for a player starting a match, use sendToArena instead. 
+	 *  
+	 * @param role The role to switch the player to 
+	 * @return The role the player had before. This will return null if the player is not in an arena. 
+	 */
+	public Role swapRole(Role role);
 }
