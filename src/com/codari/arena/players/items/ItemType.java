@@ -45,6 +45,10 @@ public enum ItemType implements ConfigurationSerializable {
 		case LEATHER_LEGGINGS:
 		case LEATHER_CHESTPLATE:
 		case LEATHER_HELMET:
+		case CHAINMAIL_BOOTS:
+		case CHAINMAIL_LEGGINGS:
+		case CHAINMAIL_CHESTPLATE:
+		case CHAINMAIL_HELMET:
 		case GOLD_BOOTS:
 		case GOLD_LEGGINGS:
 		case GOLD_CHESTPLATE:
