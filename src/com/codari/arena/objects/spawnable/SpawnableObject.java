@@ -4,10 +4,11 @@ import com.codari.arena.objects.ArenaObject;
 
 
 /**
- * Spawnable refers to an objects ability to, upon being told to by the arena, complete some task. 
- * These objects could be spawned just once or periodically. 
+ * Spawnable refers to an {@link ArenaObject}s ability to, upon being told to by the arena, complete some task. 
+ * 	These objects could be spawned just once or periodically. 
  * 
  * Examples of Spawnable Objects: Item Spawners and Mob Spawners.
+ * 
  * @author Ryan
  *
  */

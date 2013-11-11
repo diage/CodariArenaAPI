@@ -12,6 +12,12 @@ import com.codari.api.util.Tick;
  */
 public interface GameRule {
 	/**
+	 * Method to declare the valid team size which must be met before the game will accept a team. 
+	 * 
+	 * @param teamSize The size to set teams to for this game rule. 
+	 */
+	public void setTeamSize(int teamSize);
+	/**
 	 * Add a condition such that if it is ever met, the game will immediately end and declare victors.
 	 * 
 	 * @param winCondition The condition to be added.
