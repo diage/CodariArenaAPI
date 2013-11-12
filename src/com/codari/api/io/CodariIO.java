@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 
 import org.apache.commons.lang3.Validate;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
@@ -68,6 +70,17 @@ public final class CodariIO {
 		try (PrintWriter writer = new PrintWriter(file)) {
 			writer.write("");
 		}
+	}
+	
+	public static boolean isSerializable(Object obj, boolean bukkitSerializable) {
+		if (bukkitSerializable) {
+			bukkitSerializable = isConfigurationSerializable(obj);
+		}
+		return obj instanceof Serializable || bukkitSerializable;
+	}
+	
+	public static boolean isConfigurationSerializable(Object obj) {
+		return obj instanceof ConfigurationSerializable;
 	}
 	
 	//-----Constructor-----//

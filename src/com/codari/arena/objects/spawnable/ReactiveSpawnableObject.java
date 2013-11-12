@@ -1,7 +1,7 @@
 package com.codari.arena.objects.spawnable;
 /**
- * Reactive Spawnable Objects spawn reactively and are spawned externally to the timeline. 
- * Often referenced within some PersistantObject. 
+ * ReactiveSpawnableObjects spawn reactively and are spawned externally to the timeline. 
+ * 	Often referenced within some PersistantObject. 
  * @author Ryan
  *
  */
