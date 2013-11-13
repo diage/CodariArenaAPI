@@ -4,6 +4,8 @@ import org.bukkit.OfflinePlayer;
 
 import com.codari.api.util.PlayerReference;
 import com.codari.arena.players.combatants.Combatant;
+import com.codari.arena.players.teams.Team;
+import com.codari.arena.players.teams.TeamColor;
 
 /**
  * The overall manager for any {@link Arena}. This will be used to keep track of currently existing Arenas 
@@ -43,6 +45,17 @@ public interface ArenaManager {
 	 * @return The requested {@link Combatant}
 	 */
 	public Combatant getCombatant(PlayerReference playerReference);
+	
+	/**
+	 * Method to grab the team provided an {@link Arena} and a {@link TeamColor}.
+	 * 
+	 * @param arenaName The name of the Arena you want the team for. 
+	 * @param teamColor The color of the team you want within the provided Arena.
+	 * 
+	 * @return The requested team
+	 */
+	public Team getTeam(String arenaName, TeamColor teamColor);
+	public Team getTeam(Combatant combatant);
 	
 	/**
 	 * Provided with a valid name, this will get you the {@link Arena} associated with that name. 
