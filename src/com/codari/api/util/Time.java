@@ -1,8 +1,10 @@
 package com.codari.api.util;
 
 public class Time {
+	//-----Fields-----//
 	private Tick tick;
 	
+	//-----Constructors-----//
 	public Time(long minutes) {
 		this.tick = new Tick(minutes*Tick.MINUTE);
 	}
@@ -15,6 +17,7 @@ public class Time {
 		this.tick = new Tick(minutes*Tick.MINUTE + seconds*Tick.SECOND + ticks);
 	}
 	
+	//-----Public Methods-----//
 	public long ticks() {
 		return this.tick.ticks();
 	}
@@ -31,6 +34,7 @@ public class Time {
 		return this.tick.compareTo(other);
 	}
 	
+	//-----Utility Methods-----//
 	@Override
 	public int hashCode() {
 		return this.tick.hashCode();
