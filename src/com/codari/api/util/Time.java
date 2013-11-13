@@ -1,8 +1,10 @@
 package com.codari.api.util;
 
 public class Time {
+	//-----Fields----//
 	private Tick tick;
 	
+	//-----Constructors-----//
 	public Time(long minutes) {
 		this.tick = new Tick(minutes*Tick.MINUTE);
 	}
@@ -15,6 +17,7 @@ public class Time {
 		this.tick = new Tick(minutes*Tick.MINUTE + seconds*Tick.SECOND + ticks);
 	}
 	
+	//-----Public methods-----//
 	public long ticks() {
 		return this.tick.ticks();
 	}
@@ -31,9 +34,16 @@ public class Time {
 		return this.tick.compareTo(other);
 	}
 	
+	//-----Overrode methods-----//
 	@Override
 	public int hashCode() {
 		return this.tick.hashCode();
+	}
+	
+	@Override
+	public String toString() {
+		//TODO leave be or include a prefix?
+		return this.tick.toString();
 	}
 	
 	@Override
