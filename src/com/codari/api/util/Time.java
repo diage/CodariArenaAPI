@@ -17,7 +17,7 @@ public class Time {
 		this.tick = new Tick(minutes*Tick.MINUTE + seconds*Tick.SECOND + ticks);
 	}
 	
-	//-----Public methods-----//
+	//-----Public Methods-----//
 	public long ticks() {
 		return this.tick.ticks();
 	}
@@ -34,7 +34,7 @@ public class Time {
 		return this.tick.compareTo(other);
 	}
 	
-	//-----Overrode methods-----//
+	//-----Overrode Methods-----//
 	@Override
 	public int hashCode() {
 		return this.tick.hashCode();
