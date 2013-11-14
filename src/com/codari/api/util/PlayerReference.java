@@ -48,14 +48,6 @@ public final class PlayerReference implements Metadatable, OfflinePlayer, Compar
 		return instanceOf(player.getName());
 	}
 	
-	public static void kickAllPlayers() {
-		for (PlayerReference r : players.values()) {
-			if (r.isOnline()) {
-				r.getPlayer().kickPlayer("Server Stoppingsafhklhklsfhafhalkfas");
-			}
-		}
-	}
-	
 	//-----Fields-----//
 	private OfflinePlayer player;
 	
