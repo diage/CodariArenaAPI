@@ -18,6 +18,7 @@ public interface Stat extends Iterable<StatModifier>, Comparable<Stat> {
 	public void increaseBaseValue(float amount);
 	public void decreaseBaseValue(float amount);
 	
-	public boolean addModifier(String identifier, Modifier modifier);
+	public StatModifier setModifier(String identifier, Modifier modifier);
 	public StatModifier getModifier(String identifier);
+	public StatModifier removeModifier(String identifier);
 }
