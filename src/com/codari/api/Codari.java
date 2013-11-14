@@ -3,6 +3,7 @@ package com.codari.api;
 import org.bukkit.plugin.Plugin;
 
 import com.codari.api.metadata.MetadataManager;
+import com.codari.api.stats.StatFactory;
 import com.codari.arena.ArenaManager;
 
 /**
@@ -25,4 +26,6 @@ public interface Codari extends Plugin {
 	 * @return The Arena Manager.
 	 */
 	public ArenaManager getArenaManager();
+	
+	public StatFactory getStatFactory();
 }
