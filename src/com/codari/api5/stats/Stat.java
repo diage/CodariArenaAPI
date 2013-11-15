@@ -14,11 +14,11 @@ public interface Stat extends Iterable<StatModifier>, Comparable<Stat> {
 	public short shortValue();
 	
 	public float getBaseValue();
-	public void setBaseValue(float baseValue);
-	public void increaseBaseValue(float amount);
-	public void decreaseBaseValue(float amount);
+	public int getLevel();
+	public int getMaxLevel();
+	public void setLevel(int level);
 	
-	public StatModifier setModifier(String identifier, Modifier modifier);
+	public void setModifier(String identifier, Modifier modifier);
 	public StatModifier getModifier(String identifier);
-	public StatModifier removeModifier(String identifier);
+	public void removeModifier(String identifier);
 }
