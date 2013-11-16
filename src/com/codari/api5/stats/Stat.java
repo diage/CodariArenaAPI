@@ -2,8 +2,13 @@ package com.codari.api5.stats;
 
 import com.codari.api5.util.Modifier;
 
+/**
+ * <p>Represents a stat value for a specific instance of {@link StatHolder}.</p>
+ * 
+ * @author Soren025
+ */
 public interface Stat extends Iterable<StatModifier>, Comparable<Stat> {
-	public String getName();
+	public StatType getType();
 	public StatManager getStatManager();
 	
 	public byte byteValue();
@@ -13,10 +18,9 @@ public interface Stat extends Iterable<StatModifier>, Comparable<Stat> {
 	public long longValue();
 	public short shortValue();
 	
-	public float getBaseValue();
 	public int getLevel();
-	public int getMaxLevel();
 	public void setLevel(int level);
+	public float getBaseValue();
 	
 	public void setModifier(String identifier, Modifier modifier);
 	public StatModifier getModifier(String identifier);
