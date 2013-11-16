@@ -1,6 +1,6 @@
 package com.codari.arena5.players.role;
 
-import com.codari.arena5.players.Skill;
+import com.codari.arena5.players.skills.Skill;
 
 /**
  * A role identifies core characteristics about how the player will interact within the game. 
