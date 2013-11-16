@@ -1,5 +1,10 @@
 package com.codari.arena5;
 
+import java.util.Map;
+
+import com.codari.arena5.players.teams.Team;
+import com.codari.arena5.players.teams.TeamColor;
+
 /**
  * Current representation of the primary Arena. 
  * 
@@ -11,6 +16,6 @@ package com.codari.arena5;
  */
 public interface Arena {
 	public String getName();
-	
+	public Map<TeamColor, Team> getTeams();
 	
 }
