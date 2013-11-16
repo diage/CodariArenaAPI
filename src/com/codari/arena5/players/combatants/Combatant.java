@@ -1,5 +1,6 @@
 package com.codari.arena5.players.combatants;
 
+import com.codari.api5.stats.StatHolder;
 import com.codari.api5.util.PlayerReference;
 import com.codari.arena5.Arena;
 import com.codari.arena5.players.role.Role;
@@ -12,7 +13,7 @@ import com.codari.arena5.players.role.Role;
  * @author Ryan
  *
  */
-public interface Combatant {
+public interface Combatant extends StatHolder {
 	
 	/**
 	 * This will get the {@Link PlayerReference} Associated with this Combatant.
