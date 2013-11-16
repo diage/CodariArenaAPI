@@ -19,4 +19,6 @@ public interface Role {
 	public void block();
 	public void sprint();
 	public void sneak();
+	
+	public RoleType getRoleType();
 }
