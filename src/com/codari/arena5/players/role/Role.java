@@ -14,5 +14,9 @@ public interface Role {
 	 * Retrieves the skill for this role. 
 	 * @return The {@link Skill} associated for the role in question. 
 	 */
-	public Skill getSkill();
+	public Skill[] getSkills();
+	public void doubleJump();
+	public void block();
+	public void sprint();
+	public void sneak();
 }
