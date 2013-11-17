@@ -83,7 +83,7 @@ public final class StatType {
 		}
 		
 		public StatType.Builder baseValues(float... baseValues) {
-			this.baseValues = ArrayUtils.isEmpty(baseValues) ? NULL : baseValues;
+			this.baseValues = ArrayUtils.isEmpty(baseValues) ? NULL : baseValues; //Ass.
 			return this;
 		}
 	}
