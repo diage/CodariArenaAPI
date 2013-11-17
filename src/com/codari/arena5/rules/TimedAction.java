@@ -10,7 +10,7 @@ import com.codari.api5.util.Tick;
  * @author Ryan
  *
  */
-public abstract class TimedAction implements Runnable{
+public abstract class TimedAction implements Runnable {
 	//-----Fields-----//
 	private Tick start, delay, period;
 	
@@ -63,7 +63,7 @@ public abstract class TimedAction implements Runnable{
 	 * Gets the delay provided by this timed action.
 	 * @return The delay.
 	 */
-	public Tick getDelay() {
+	public final Tick getDelay() {
 		return this.delay;
 	}
 	
@@ -71,7 +71,7 @@ public abstract class TimedAction implements Runnable{
 	 * Gets the start time of this timed action. 
 	 * @return The start time. 
 	 */
-	public Tick getStart() {
+	public final Tick getStart() {
 		return this.start;
 	}
 	
@@ -79,7 +79,7 @@ public abstract class TimedAction implements Runnable{
 	 * Gets the period of this timed action. 
 	 * @return The period.
 	 */
-	public Tick getPeriod() {
+	public final Tick getPeriod() {
 		return this.period;
 	}
 }
