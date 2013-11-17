@@ -3,6 +3,7 @@ package com.codari.arena5.rules;
 import java.util.Collection;
 
 import com.codari.api5.util.Time;
+import com.codari.arena5.rules.roles.RoleDelegation;
 
 /**
  * Game rules will be static objects inserted into the time line upon registration. They will define passive actions, 
@@ -94,4 +95,20 @@ public interface GameRule {
 	 * @return The MatchDuration for this GameRule, for infinite length it will return a 0.
 	 */
 	public int getMatchDuration();
+	
+	/**
+	 * Method to add a {@link RoleDelegation} to the Game Rule. One must be added for the arena to be valid. 
+	 * 
+	 * @param roleDelegation The delegation type to be added. 
+	 * 
+	 * @return true if successful, false if it is an invalid roleDelegation. 
+	 */
+	public boolean addRoleDelegation(RoleDelegation roleDelegation);
+	
+	/**
+	 * Method to get the {@link RoleDelegation} for this GameRule. 
+	 * 
+	 * @return The RoleDelegation. 
+	 */
+	public RoleDelegation getRoleDelegation();
 }
