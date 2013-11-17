@@ -15,7 +15,19 @@ import com.codari.arena5.players.teams.TeamColor;
  *
  */
 public interface Arena {
+	
+	/**
+	 * Get the name of this Arena. Note this may differ from the name requested.
+	 *  
+	 * @return The name of the Arena. 
+	 */
 	public String getName();
+	
+	/**
+	 * Method to get all {@link Team}s for this Arena. 
+	 * 
+	 * @return A map containing the TeamColor to the Team. 
+	 */
 	public Map<TeamColor, Team> getTeams();
 	
 }

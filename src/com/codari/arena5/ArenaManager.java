@@ -55,6 +55,13 @@ public interface ArenaManager {
 	 * @return The requested team
 	 */
 	public Team getTeam(String arenaName, TeamColor teamColor);
+	/**
+	 * Method to get the {@Link Team} given a {@link Combatant}. 
+	 * 
+	 * @param combatant The {@link Combatant} of whom you want the {@Link Team}. 
+	 * 
+	 * @return The {@Link Team} for the provided {@link Combatant}.
+	 */
 	public Team getTeam(Combatant combatant);
 	
 	/**
