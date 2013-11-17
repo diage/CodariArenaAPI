@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import com.codari.api5.Codari;
+
 public final class StatType {
 	//-----Static Methods-----//
-	public static StatType.Builder builder(String name) {
+	public static StatType.Builder builder(String name) throws IllegalArgumentException {
 		return new Builder(name);
 	}
 	
@@ -67,8 +69,11 @@ public final class StatType {
 		private float[] baseValues;
 		
 		//-----Constructor-----//
-		private Builder(String name) {
-			this.name = name;
+		private Builder(String name) throws IllegalArgumentException {
+			if (!Codari.INSTANCE.getStatFactory().isValidStatName(name)) {
+				throw new IllegalArgumentException(name + " is not a valid stat name");
+			}
+			this.name = name.trim();
 			this.baseValues = NULL;
 		}
 		

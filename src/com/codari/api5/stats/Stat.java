@@ -21,7 +21,6 @@ public interface Stat extends Iterable<StatModifier>, Comparable<Stat> {
 	public int getLevel();
 	public void setLevel(int level);
 	public float getBaseValue();
-	public float getFlatValue();
 	
 	public void setModifier(String identifier, Modifier modifier);
 	public StatModifier getModifier(String identifier);
