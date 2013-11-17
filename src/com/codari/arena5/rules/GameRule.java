@@ -1,5 +1,7 @@
 package com.codari.arena5.rules;
 
+import java.util.Collection;
+
 import com.codari.api5.util.Time;
 
 /**
@@ -64,4 +66,32 @@ public interface GameRule {
 	 * @return True if the duration is set and at least one win condition exists, false otherwise. 
 	 */
 	public boolean isValid();
+	
+	/**
+	 * Method to get all of the {@link TimedAction}s for this GameRule
+	 * 
+	 * @return A collection of the TimedActions
+	 */
+	public Collection<TimedAction> getTimedActions();
+	
+	/**
+	 * Method to get all of the {@link WinCondition}s for this GameRule
+	 *  
+	 * @return A collection of WinConditions
+	 */
+	public Collection<WinCondition> getWinConditions();
+	
+	/**
+	 * Method to get the TeamSize that has been set for this GameRule.
+	 *   
+	 * @return The TeamSize for this GameRule
+	 */
+	public int getTeamSize();
+	
+	/**
+	 * Method to get the MatchDuration for this GameRule
+	 * 
+	 * @return The MatchDuration for this GameRule, for infinite length it will return a 0.
+	 */
+	public int getMatchDuration();
 }
