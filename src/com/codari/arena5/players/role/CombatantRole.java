@@ -6,6 +6,7 @@ import java.util.Map;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.codari.api5.Codari;
+import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.skills.Skill;
 import com.codari.arena5.players.skills.SkillActivation;
 
@@ -40,54 +41,54 @@ public class CombatantRole implements Role {
 	}
 
 	@Override
-	public Skill[] getSkills() {
+	public final Skill[] getSkills() {
 		return (Skill[]) this.skills.values().toArray();
 	}
 
 	/* Checks if the skill is on cooldown first. If the skill's not on cooldown, checks for the Key with contains double jump,
 	 * activates the skill, then puts the skill on cooldown. */
 	@Override
-	public void doubleJump() {
+	public final void doubleJump(Combatant combatant) {
 		if(this.checkCooldown()){
 			if(this.skills.containsKey(SkillActivation.DOUBLE_JUMP)) {
-				this.skills.get(SkillActivation.DOUBLE_JUMP).activateSkill(); 
+				this.skills.get(SkillActivation.DOUBLE_JUMP).activateSkill(combatant); 
 				this.onCooldown();
 			}	
 		}
 	}
 
 	@Override
-	public void block() {
+	public final void block(Combatant combatant) {
 		if(this.checkCooldown()){
 			if(this.skills.containsKey(SkillActivation.BLOCK)) {
-				this.skills.get(SkillActivation.BLOCK).activateSkill(); 
+				this.skills.get(SkillActivation.BLOCK).activateSkill(combatant); 
 				this.onCooldown();
 			}
 		}
 	}
 
 	@Override
-	public void sprint() {
+	public final void sprint(Combatant combatant) {
 		if(this.checkCooldown()){
 			if(this.skills.containsKey(SkillActivation.SPRINT)) {
-				this.skills.get(SkillActivation.SPRINT).activateSkill(); 
+				this.skills.get(SkillActivation.SPRINT).activateSkill(combatant); 
 				this.onCooldown();
 			}	
 		}
 	}
 
 	@Override
-	public void sneak() {
+	public final void sneak(Combatant combatant) {
 		if(this.checkCooldown()){
 			if(this.skills.containsKey(SkillActivation.SNEAK)) {
-				this.skills.get(SkillActivation.SNEAK).activateSkill(); 
+				this.skills.get(SkillActivation.SNEAK).activateSkill(combatant); 
 				this.onCooldown();
 			}
 		}
 	}
 
 	@Override
-	public String getName() {
+	public final String getName() {
 		return this.name;
 	}
 
