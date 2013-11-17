@@ -3,6 +3,7 @@ package com.codari.api5.util;
 public class Time {
 	//-----Constants-----//
 	public final static Time NULL = new Time(0, 0, -1);
+	public final static Time MAX = new Time(0, 0, Long.MAX_VALUE);
 	
 	//-----Fields----//
 	private Tick tick;
