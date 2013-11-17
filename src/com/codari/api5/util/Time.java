@@ -1,6 +1,9 @@
 package com.codari.api5.util;
 
 public class Time {
+	//-----Constants-----//
+	public final static Time NULL = new Time(0, 0, -1);
+	
 	//-----Fields----//
 	private Tick tick;
 	
