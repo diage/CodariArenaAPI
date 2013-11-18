@@ -1,6 +1,6 @@
 package com.codari.arena5;
 
-import com.codari.api5.util.Tick;
+import com.codari.api5.util.Time;
 import com.codari.arena5.objects.persistant.DelayedPersistentObject;
 import com.codari.arena5.objects.persistant.ImmediatePersistentObject;
 import com.codari.arena5.objects.spawnable.FixedSpawnableObject;
@@ -17,18 +17,6 @@ import com.codari.arena5.rules.GameRule;
  *
  */
 public interface ArenaBuilder {
-		//-----Registrations-----//
-	
-	//*****Game Rule Registration*****//
-	/**
-	 * Register a {@Link GameRule} into the Arena. 
-	 * 
-	 * @param gameRule The game rule to be registered.
-	 * 
-	 *  @return A valid reference to this ArenaBuilder with the {@link GameRule} set. 
-	 */
-	public ArenaBuilder registerGameRule(GameRule gameRule);
-
 	//*****Group Registration*****//
 	/**
 	 * Create a group for the time line to randomly select a {@Link SpawnableObject}. 
@@ -45,7 +33,7 @@ public interface ArenaBuilder {
 	 * @return True if the group was successfully made. 
 	 * 	False if the name was already taken or the initial time is after the end of the game.  
 	 */
-	public boolean createRandomTimelineGroup(String groupName, Tick time);
+	public boolean createRandomTimelineGroup(String groupName, Time time);
 	
 	/**
 	 * Create a group for the time line to randomly select a {@Link SpawnableObject}. 
@@ -64,7 +52,7 @@ public interface ArenaBuilder {
 	 * @return True if the group was successfully made. 
 	 * 	False if the name was already taken or the initial time is after the end of the game.   
 	 */
-	public boolean createRandomTimelineGroup(String groupName, Tick time, Tick repeatTime);
+	public boolean createRandomTimelineGroup(String groupName, Time time, Time repeatTime);
 
 	//*****Random Spawnable Registration*****//
 	/**
@@ -93,7 +81,7 @@ public interface ArenaBuilder {
 	 * @return True if it was successful in adding.
 	 * 	False if the time will be after the end of the match or otherwise unsuccessful. 
 	 */
-	public boolean registerFixedSpawnable(FixedSpawnableObject object, Tick time);
+	public boolean registerFixedSpawnable(FixedSpawnableObject object, Time time);
 	
 	/**
 	 * Register a {@Link FixedSpawnableObject} at the given time which will repeat until the game ends.
@@ -107,7 +95,7 @@ public interface ArenaBuilder {
 	 * @return True if it was successful in adding. 
 	 * 	False if the time will be after the end of the match or otherwise unsuccessful.  
 	 */
-	public boolean registerFixedSpawnable(FixedSpawnableObject object, Tick time, Tick repeatTime);
+	public boolean registerFixedSpawnable(FixedSpawnableObject object, Time time, Time repeatTime);
 
 	//*****Persistent Object Registration*****//
 	/**
@@ -135,5 +123,5 @@ public interface ArenaBuilder {
 	 * 
 	 * @return True if successful, False otherwise.   
 	 */
-	public boolean registerPersistent(DelayedPersistentObject object, Tick time, boolean override);
+	public boolean registerPersistent(DelayedPersistentObject object, Time time, boolean override);
 }

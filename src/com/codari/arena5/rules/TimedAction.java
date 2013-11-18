@@ -1,6 +1,6 @@
 package com.codari.arena5.rules;
 
-import com.codari.api5.util.Tick;
+import com.codari.api5.util.Time;
 
 /**
  * A Timed action describes something happen within the game at a given point in time.
@@ -12,14 +12,14 @@ import com.codari.api5.util.Tick;
  */
 public abstract class TimedAction implements Runnable {
 	//-----Fields-----//
-	private Tick start, delay, period;
+	private Time start, delay, period;
 	
 	//-----Constructors-----//
 	/**
 	 * Basic constructor, provides only for a start time from the time line.
 	 * @param start The time at which to do this action. 
 	 */
-	public TimedAction(Tick start) {
+	public TimedAction(Time start) {
 		this.start = start;
 	}
 	
@@ -28,7 +28,7 @@ public abstract class TimedAction implements Runnable {
 	 * @param start The time at which to begin the delay from.
 	 * @param delay The amount of time until the action is done. 
 	 */
-	public TimedAction(Tick start, Tick delay) {
+	public TimedAction(Time start, Time delay) {
 		this(start);
 		this.delay = delay;
 	}
@@ -41,7 +41,7 @@ public abstract class TimedAction implements Runnable {
 	 * @param delay The amount of time until the first action is done. 
 	 * @param period The amount of time between each call after the delay. 
 	 */
-	public TimedAction(Tick start, Tick delay, Tick period) {
+	public TimedAction(Time start, Time delay, Time period) {
 		this(start, delay);
 		this.period = period;
 	}
@@ -63,7 +63,7 @@ public abstract class TimedAction implements Runnable {
 	 * Gets the delay provided by this timed action.
 	 * @return The delay.
 	 */
-	public final Tick getDelay() {
+	public final Time getDelay() {
 		return this.delay;
 	}
 	
@@ -71,7 +71,7 @@ public abstract class TimedAction implements Runnable {
 	 * Gets the start time of this timed action. 
 	 * @return The start time. 
 	 */
-	public final Tick getStart() {
+	public final Time getStart() {
 		return this.start;
 	}
 	
@@ -79,7 +79,7 @@ public abstract class TimedAction implements Runnable {
 	 * Gets the period of this timed action. 
 	 * @return The period.
 	 */
-	public final Tick getPeriod() {
+	public final Time getPeriod() {
 		return this.period;
 	}
 }
