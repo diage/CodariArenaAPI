@@ -5,7 +5,7 @@ import com.codari.arena5.objects.persistant.DelayedPersistentObject;
 import com.codari.arena5.objects.persistant.ImmediatePersistentObject;
 import com.codari.arena5.objects.spawnable.FixedSpawnableObject;
 import com.codari.arena5.objects.spawnable.RandomSpawnableObject;
-import com.codari.arena5.rules.GameRule;
+import com.codari.arena5.rules.GameRule; //<<Why is this removed?
 
 /**
  * The ArenaBuilder is the factory used for all {@link Arena}s.
