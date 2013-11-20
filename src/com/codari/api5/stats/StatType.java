@@ -3,28 +3,38 @@ package com.codari.api5.stats;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.codari.api5.Codari;
 
 public final class StatType {
 	//-----Static Methods-----//
-	public static StatType.Builder builder(String name) throws IllegalArgumentException {
+	public static StatType.Builder newBuilder(String name) throws IllegalArgumentException {
 		return new Builder(name);
 	}
 	
 	//-----Fields-----//
 	private final String name;
+	private final String description;
 	private final float[] baseValues;
+	private final float minValue, maxValue;
 	
 	//-----Constructor-----//
 	private StatType(Builder builder) {
 		this.name = builder.name;
+		this.description = builder.description;
 		this.baseValues = builder.baseValues;
+		this.minValue = builder.minValue;
+		this.maxValue = builder.maxValue;
 	}
 	
 	//-----Public Methods-----//
 	public String getName() {
 		return this.name;
+	}
+	
+	public String getDescription() {
+		return this.description;
 	}
 	
 	public float[] getBaseValues() {
@@ -37,6 +47,14 @@ public final class StatType {
 	
 	public int getMaxLevel() {
 		return this.baseValues.length;
+	}
+	
+	public float getMinValue() {
+		return this.minValue;
+	}
+	
+	public float getMaxValue() {
+		return this.maxValue;
 	}
 	
 	//-----Utility Methods-----//
@@ -62,19 +80,21 @@ public final class StatType {
 	//-----Stat Info Builder-----//
 	public final static class Builder {
 		//-----Constants-----//
-		private final float[] NULL = new float[] {0};
+		private final static float[] DEFAULT_BASE_VALUES = {0};
 		
 		//-----Fields-----//
 		private final String name;
+		private String description;
 		private float[] baseValues;
+		private float minValue, maxValue;
 		
 		//-----Constructor-----//
-		private Builder(String name) throws IllegalArgumentException {
+		public Builder(String name) throws IllegalArgumentException {
+			name = StringUtils.normalizeSpace(name).trim();
 			if (!Codari.INSTANCE.getStatFactory().isValidStatName(name)) {
 				throw new IllegalArgumentException(name + " is not a valid stat name");
 			}
-			this.name = name.trim();
-			this.baseValues = NULL;
+			this.name = name;
 		}
 		
 		//-----Public Methods-----//
@@ -82,8 +102,23 @@ public final class StatType {
 			return new StatType(this);
 		}
 		
-		public StatType.Builder baseValues(float... baseValues) {
-			this.baseValues = ArrayUtils.isEmpty(baseValues) ? NULL : baseValues; //Ass.
+		public StatType.Builder setDescription(String description) {
+			this.description = description == null ? StringUtils.EMPTY : description;
+			return this;
+		}
+		
+		public StatType.Builder setBaseValues(float... baseValues) {
+			this.baseValues = ArrayUtils.isEmpty(baseValues) ? DEFAULT_BASE_VALUES : baseValues;
+			return this;
+		}
+		
+		public StatType.Builder setMinValue(float minValue) {
+			this.minValue = minValue > this.maxValue ? this.maxValue : minValue;
+			return this;
+		}
+		
+		public StatType.Builder setMaxValue(float maxValue) {
+			this.maxValue = maxValue < this.minValue ? this.minValue : maxValue;
 			return this;
 		}
 	}
