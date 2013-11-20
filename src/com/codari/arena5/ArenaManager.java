@@ -39,7 +39,7 @@ public interface ArenaManager {
 	
 	/**
 	 * Method to grab a {@link Combatant} from it's {@link PlayerReference}.
-	 * 	Refer to {@link PlayerReference] for more information. 
+	 * 	Refer to {@link PlayerReference} for more information. 
 	 * 
 	 * @param playerReference The {@link PlayerReference} for the {@link Combatant} in question. 
 	 * 
@@ -62,6 +62,7 @@ public interface ArenaManager {
 	 * @param combatant The {@link Combatant} of whom you want the {@Link Team}. 
 	 * 
 	 * @return The {@Link Team} for the provided {@link Combatant}.
+	 * 	This method return null if they are not on a Team. 
 	 */
 	public Team getTeam(Combatant combatant);
 	
