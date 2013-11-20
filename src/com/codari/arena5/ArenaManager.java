@@ -7,6 +7,7 @@ import com.codari.arena5.objects.ArenaObject;
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.teams.Team;
 import com.codari.arena5.players.teams.TeamColor;
+import com.codari.arena5.rules.GameRule;
 
 /**
  * The overall manager for any {@link Arena}. This will be used to keep track of currently existing Arenas 
@@ -92,5 +93,5 @@ public interface ArenaManager {
 	 *  
 	 * @return A reference to a clean {@link ArenaBuilder}.
 	 */
-	public ArenaBuilder getArenaBuider();
+	public ArenaBuilder getArenaBuider(GameRule gameRule) throws IllegalArgumentException;
 }
