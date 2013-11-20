@@ -1,5 +1,7 @@
 package com.codari.arena5.players.role;
 
+import java.util.Collection;
+
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.skills.Skill;
 
@@ -15,11 +17,12 @@ public interface Role {
 	 * Retrieves the skill for this role. 
 	 * @return The {@link Skill} associated for the role in question. 
 	 */
-	public Skill[] getSkills();
+	public Collection<Skill> getSkills();
 	public void doubleJump(Combatant combatant);
 	public void block(Combatant combatant);
 	public void sprint(Combatant combatant);
 	public void sneak(Combatant combatant);
 	
 	public String getName();
+	public void addSkill(Skill skill);
 }

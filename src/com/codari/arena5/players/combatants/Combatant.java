@@ -4,6 +4,7 @@ import com.codari.api5.stats.StatHolder;
 import com.codari.api5.util.PlayerReference;
 import com.codari.arena5.Arena;
 import com.codari.arena5.players.role.Role;
+import com.codari.arena5.players.teams.Team;
 /**
  * In game representation of a player. This is how the {@link Arena} and any arena-related object will reference the player.
  * 
@@ -45,15 +46,17 @@ public interface Combatant extends StatHolder {
 	 */
 	public String getArenaName();
 	
+	public Team getTeam();
+	
 	/**
 	 * Sends this combatant to an {@link Arena} with a specified {@link Role}. 
 	 * 
 	 * @param arena The Arena to send this combatant to. 
-	 * @param role The Role for this combatant to play as.
 	 * @return True if the player was successfully added to the Arena, false otherwise. 
 	 */
-	public boolean sendToArena(Arena arena, Role role);
+	public boolean sendToArena(Arena arena);
 	
+	public void setRole(Role role);
 	/**
 	 * Sends this Combatant back to a Non-Competing {@link Role} and removes this from the {@link Arena}.
 	 * 
@@ -61,12 +64,5 @@ public interface Combatant extends StatHolder {
 	 */
 	public boolean leaveArena();
 	
-	/**
-	 * Method to swap the {@link Role} of this combatant while in an {@link Arena}. This method should not be used to set a 
-	 * 	{@link Role} for a player starting a match, use sendToArena instead. 
-	 *  
-	 * @param role The role to switch the player to 
-	 * @return The role the player had before. This will return null if the player is not in an arena. 
-	 */
-	public Role swapRole(Role role);
+	public void setTeam(Team team);
 }

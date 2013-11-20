@@ -3,7 +3,6 @@ package com.codari.arena5;
 import org.bukkit.OfflinePlayer;
 
 import com.codari.api5.util.PlayerReference;
-import com.codari.arena5.objects.ArenaObject;
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.teams.Team;
 import com.codari.arena5.players.teams.TeamColor;
@@ -47,6 +46,8 @@ public interface ArenaManager {
 	 */
 	public Combatant getCombatant(PlayerReference playerReference);
 	
+	public boolean createTeam(Team team);
+	
 	/**
 	 * Method to grab the team provided an {@link Arena} and a {@link TeamColor}.
 	 * 
@@ -55,7 +56,7 @@ public interface ArenaManager {
 	 * 
 	 * @return The requested team
 	 */
-	public Team getTeam(String arenaName, TeamColor teamColor);
+	public Team getTeam(String arenaName, String teamName);
 	/**
 	 * Method to get the {@Link Team} given a {@link Combatant}. 
 	 * 

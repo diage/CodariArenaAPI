@@ -15,13 +15,6 @@ import com.codari.arena5.players.combatants.Combatant;
 public interface Team {
 	
 	/**
-	 * Gets the color associated with this team. 
-	 * 
-	 * @return The color of the team. 
-	 */
-	public TeamColor getColor();
-	
-	/**
 	 * Gets you a list containing every {@link Combatant} on this team.
 	 * 
 	 * @return A List of containing every {@link Combatant} on the team. 
@@ -45,4 +38,7 @@ public interface Team {
 	 * @return A {@link List} of every other {@link Combatant} other than the provided team mate. 
 	 */
 	public List<Combatant> getTeamMates(Combatant combatant);
+	
+	public void setLeader();
+	public boolean isLeader(Combatant combatant);
 }
