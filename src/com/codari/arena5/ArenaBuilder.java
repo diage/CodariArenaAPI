@@ -19,14 +19,14 @@ import com.codari.arena5.rules.GameRule; //<<Why is this removed?
 public interface ArenaBuilder {
 	//*****Group Registration*****//
 	/**
-	 * Create a group for the time line to randomly select a {@Link SpawnableObject}. 
+	 * <p>Create a group for the time line to randomly select a {@link com.codari.arena5.objects.spawnable.SpawnableObject Spawnable Object}. 
 	 * 		This will only spawn once.  
 	 * 		You can think of the group as a set where it will grab from the set exactly one 
-	 * 			{@Link SpawnableObject} at each request to spawn from that group. 
+	 * 			{@link com.codari.arena5.objects.spawnable.SpawnableObject Spawnable Object} at each request to spawn from that group.</p>
 	 * 
-	 * 	All {@Link ArenaObject} registration must be after the {@Link GameRule} registration. 
+	 * 	<p>All {@link com.codari.arena5.objects.ArenaObject Arena Object} registration must be after the {@link GameRule} registration.</p>
 	 * 
-	 * @param groupName The name to be given to the group of {@Link SpawnableObject}s 
+	 * @param groupName The name to be given to the group of {@link com.codari.arena5.objects.spawnable.SpawnableObject Spawnable Objects} 
 	 * 		which the time line will choose from.
 	 * @param time The time at which the object will be spawned.
 	 * 
