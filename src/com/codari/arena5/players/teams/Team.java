@@ -28,6 +28,13 @@ public interface Team {
 	 */
 	public Arena getArena();
 	
+	/** 
+	 * The name of the team.
+	 * 
+	 * @return The name of the team.
+	 */
+	public String getTeamName();
+	
 	/**
 	 * Gets you a list of every {@link Combatant} not counting the {@Link Combatant} provided. 
 	 * 
@@ -39,6 +46,7 @@ public interface Team {
 	 */
 	public List<Combatant> getTeamMates(Combatant combatant);
 	
-	public void setLeader();
+	public void setLeader(Combatant combatant);
+	
 	public boolean isLeader(Combatant combatant);
 }
