@@ -94,7 +94,7 @@ public interface GameRule {
 	 * 
 	 * @return The MatchDuration for this GameRule, for infinite length it will return a 0.
 	 */
-	public int getMatchDuration();
+	public Time getMatchDuration();
 	
 	/**
 	 * Method to add a {@link RoleDelegation} to the Game Rule. One must be added for the arena to be valid. 
