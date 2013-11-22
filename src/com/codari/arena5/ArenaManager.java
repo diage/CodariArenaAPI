@@ -49,8 +49,6 @@ public interface ArenaManager {
 	 */
 	public Combatant getCombatant(PlayerReference playerReference);
 	
-	public boolean createTeam(Team team);
-	
 	/**
 	 * Method to grab the team provided an {@link Arena} and a {@link TeamColor}.
 	 * 
