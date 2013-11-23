@@ -15,18 +15,8 @@ import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
-/**
- * <p>Assists with the serialization process for objects implementing {@link java.io.Serializable Serializable}
- * and {@link org.bukkit.configuration.serialization.ConfigurationSerializable ConfigurationSerializable}.</p>
- * 
- * 
- * @author Soren025
- */
 public final class CodariSerialization {
 	//-----Private Constructor-----//
-	/**
-	 * <p>Private constructor to prevent construction.</p>
-	 */
 	private CodariSerialization(){}
 	
 	//-----Methods-----//
