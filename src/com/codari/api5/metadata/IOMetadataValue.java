@@ -1,14 +1,14 @@
 package com.codari.api5.metadata;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Validate;
 import org.bukkit.metadata.MetadataValueAdapter;
 import org.bukkit.plugin.Plugin;
 
-import com.codari.api5.io.CodariIO;
+import com.codari.api5.io.CodariSerialization;
+import com.codari.api5.io.CodariSerializationException;
 
 public final class IOMetadataValue extends MetadataValueAdapter {
 	//-----Fields-----//
@@ -42,9 +42,9 @@ public final class IOMetadataValue extends MetadataValueAdapter {
 	public boolean save() {
 		if (this.value != ObjectUtils.NULL) {
 			try {
-				CodariIO.serialize(this.value, this.file);
+				CodariSerialization.serialize(this.value, this.file);
 				return true;
-			} catch (IOException ex) {
+			} catch (CodariSerializationException ex) {
 				//TODO Debug check
 				ex.printStackTrace();
 			}
@@ -54,9 +54,9 @@ public final class IOMetadataValue extends MetadataValueAdapter {
 	
 	public boolean reload() {
 		try {
-			this.value = CodariIO.deserialize(file);
+			this.value = CodariSerialization.deserialize(file);
 			return true;
-		} catch (ClassNotFoundException | IOException ex) {
+		} catch (CodariSerializationException ex) {
 			//TODO Debug check
 			ex.printStackTrace();
 			return false;
