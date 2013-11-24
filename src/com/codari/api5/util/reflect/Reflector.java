@@ -18,6 +18,13 @@ public final class Reflector {
 	public final static String OBC_PATH = "org.bukkit.craftbukkit." + MINECRAFT_VERSION;
 	
 	//-----Static Methods-----//
+	/*
+	 * Example use of below method, copy paste it and try it out
+	 * 
+	 * System.out.println(Reflector.reflect("replace(1,2).replace(3,4).toUpperCase()", "codari", 'o', '0', 'i', '1'));
+	 * 
+	 * Will reflectively turn the input string "codari" into the output C0DAR1.
+	 */
 	public static Reflector reflect(String command, Object obj, Object... args)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		return new Reflector(reflect0(command, obj, args));
@@ -71,85 +78,85 @@ public final class Reflector {
 		return obj;
 	}
 	
-	public static Reflector invokeMethod(Object obj, String name, Object... args)
+	public static Reflector invokeMethod(Object obj, String methodName, Object... args)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		if (args == null) {
 			args = ArrayUtils.EMPTY_OBJECT_ARRAY;
 		}
-		return new Reflector(invokeMethod0(obj.getClass(), obj, name, args));
+		return new Reflector(invokeMethod0(obj.getClass(), obj, methodName, args));
 	}
 	
-	public static Reflector invokeStaticMethod(Class<?> clazz, String name, Object... args)
+	public static Reflector invokeStaticMethod(Class<?> clazz, String methodName, Object... args)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		if (args == null) {
 			args = ArrayUtils.EMPTY_OBJECT_ARRAY;
 		}
-		return new Reflector(invokeMethod0(clazz, null, name, args));
+		return new Reflector(invokeMethod0(clazz, null, methodName, args));
 	}
 	
-	private static Object invokeMethod0(Class<?> clazz, Object obj, String name, Object[] args)
+	private static Object invokeMethod0(Class<?> clazz, Object obj, String methodName, Object[] args)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		for (; clazz != null; clazz = clazz.getSuperclass()) {
 			for (Method m : clazz.getDeclaredMethods()) {
-				if (m.getName().equals(name) && isMatch(m.getParameterTypes(), args)) {
+				if (m.getName().equals(methodName) && isMatch(m.getParameterTypes(), args)) {
 					m.setAccessible(true);
 					return m.invoke(obj, args);
 				}
 			}
 		}
 		//TODO needs better choice of exception and message
-		throw new IllegalArgumentException("couldnt find method named " + name + " in the class " + clazz);
+		throw new IllegalArgumentException("couldnt find method named " + methodName + " in the class " + clazz);
 	}
     
-    public static Reflector getField(Object obj, String name)
+    public static Reflector getField(Object obj, String fieldName)
     		throws IllegalArgumentException, IllegalAccessException {
-    	return new Reflector(getField0(obj.getClass(), obj, name));
+    	return new Reflector(getField0(obj.getClass(), obj, fieldName));
     }
     
-    public static Reflector getStaticField(Class<?> clazz, String name)
+    public static Reflector getStaticField(Class<?> clazz, String fieldName)
     		throws IllegalArgumentException, IllegalAccessException {
-    	return new Reflector(getField0(clazz, null, name));
+    	return new Reflector(getField0(clazz, null, fieldName));
     }
     
-    private static Object getField0(Class<?> clazz, Object obj, String name)
+    private static Object getField0(Class<?> clazz, Object obj, String fieldName)
     		throws IllegalArgumentException, IllegalAccessException {
 		for (; clazz != null; clazz = clazz.getSuperclass()) {
 			for (Field f : clazz.getDeclaredFields()) {
-				if (f.getName().equals(name)) {
+				if (f.getName().equals(fieldName)) {
 					f.setAccessible(true);
 					return f.get(obj);
 				}
 			}
 		}
 		//TODO needs better choice of exception and message
-		throw new IllegalArgumentException("couldnt find field named " + name + " in the class " + clazz);
+		throw new IllegalArgumentException("couldnt find field named " + fieldName + " in the class " + clazz);
     }
     
-    public static void setField(Object obj, String name, Object value, boolean ignoreFinal)
+    public static void setField(Object obj, String fieldName, Object value, boolean ignoreFinal)
     		throws IllegalArgumentException, IllegalAccessException {
-    	setField0(obj.getClass(), obj, name, value, ignoreFinal);
+    	setField0(obj.getClass(), obj, fieldName, value, ignoreFinal);
     }
     
-    public static void setField(Object obj, String name, Object value)
+    public static void setField(Object obj, String fieldName, Object value)
     		throws IllegalArgumentException, IllegalAccessException {
-    	setField(obj, name, value, false);
+    	setField(obj, fieldName, value, false);
     }
     
-    public static void setStaticField(Class<?> clazz, String name, Object value, boolean ignoreFinal)
+    public static void setStaticField(Class<?> clazz, String fieldName, Object value, boolean ignoreFinal)
     		throws IllegalArgumentException, IllegalAccessException {
-    	setField0(clazz, null, name, value, ignoreFinal);
+    	setField0(clazz, null, fieldName, value, ignoreFinal);
     }
     
-    public static void setStaticField(Class<?> clazz, String name, Object value)
+    public static void setStaticField(Class<?> clazz, String fieldName, Object value)
     		throws IllegalArgumentException, IllegalAccessException {
-    	setStaticField(clazz, name, value, false);
+    	setStaticField(clazz, fieldName, value, false);
     }
     
-    private static void setField0(Class<?> clazz, Object obj, String name, Object value, boolean ignoreFinal)
+    private static void setField0(Class<?> clazz, Object obj, String fieldName, Object value, boolean ignoreFinal)
     		throws IllegalArgumentException, IllegalAccessException {
 		for (; clazz != null; clazz = clazz.getSuperclass()) {
 			for (Field f : clazz.getDeclaredFields()) {
-				if (f.getName().equals(name)) {
+				if (f.getName().equals(fieldName)) {
 					f.setAccessible(true);
 					if (ignoreFinal) {
 						setField0(f.getClass(), f, "modifiers", f.getModifiers() & ~Modifier.FINAL, false);
@@ -252,27 +259,27 @@ public final class Reflector {
 		return clazz.isInstance(this.get());
 	}
 	
-	public Reflector invokeMethod(String name, Object... args)
+	public Reflector call(String methodName, Object... args)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		return this.get() != null ? invokeMethod(this.get(), name, args) : this;
+		return this.get() != null ? invokeMethod(this.get(), methodName, args) : this;
 	}
 	
-	public Reflector getField(String name)
+	public Reflector get(String fieldName)
 			throws IllegalArgumentException, IllegalAccessException {
-		return this.get() != null ? getField(this.get(), name) : this;
+		return this.get() != null ? getField(this.get(), fieldName) : this;
 	}
 	
-	public void setField(String name, Object value, boolean ignoreFinal)
+	public void set(String fieldName, Object value, boolean ignoreFinal)
 			throws IllegalArgumentException, IllegalAccessException {
 		if (this.get() != null) {
-			setField(this.get(), name, value, ignoreFinal);
+			setField(this.get(), fieldName, value, ignoreFinal);
 		}
 	}
 	
-	public void setField(String name, Object value)
+	public void set(String fieldName, Object value)
 			throws IllegalArgumentException, IllegalAccessException {
 		if (this.get() != null) {
-			setField(this.get(), name, value);
+			setField(this.get(), fieldName, value);
 		}
 	}
 	
