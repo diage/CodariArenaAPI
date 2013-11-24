@@ -12,9 +12,18 @@ import org.bukkit.Bukkit;
 
 public final class Reflector {
 	//-----Constants-----//
+	/**
+	 * Minecraft version of the running craftbukkit server.
+	 */
 	public final static String MINECRAFT_VERSION = Bukkit.getServer() != null ?
 			Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3] : "UNKNOWN";
+	/**
+	 * Base class name path for NMS classes "net.minecraft.server.<minecraft version>"
+	 */
 	public final static String NMS_PATH = "net.minecraft.server." + MINECRAFT_VERSION;
+	/**
+	 * Base class name path for OBC classes "org.bukkit.craftbukkit.<minecraft version>"
+	 */
 	public final static String OBC_PATH = "org.bukkit.craftbukkit." + MINECRAFT_VERSION;
 	
 	//-----Static Methods-----//
@@ -30,7 +39,7 @@ public final class Reflector {
 		return new Reflector(reflect0(command, obj, args));
 	}
 	
-	public static Reflector reflect(String command, Class<?> clazz, Object... args)
+	public static Reflector reflectStatic(String command, Class<?> clazz, Object... args)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Object obj = null;
 		int commandSplit = command.indexOf('.');
