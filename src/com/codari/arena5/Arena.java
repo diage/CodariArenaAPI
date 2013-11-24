@@ -28,5 +28,7 @@ public interface Arena {
 	 * @return A map containing the TeamColor to the Team. 
 	 */
 	public Map<String, Team> getTeams();
+
+	public ArenaBuilder getArenaBuilder();
 	
 }
