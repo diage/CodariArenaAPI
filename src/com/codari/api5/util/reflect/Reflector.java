@@ -176,11 +176,13 @@ public final class Reflector {
 		}
     }
     
-    public static Reflector constructClass(Class<?> clazz, Object... args) {
-    	return new Reflector(constructClass(clazz, args));
+    public static Reflector constructClass(Class<?> clazz, Object... args)
+    		throws InstantiationException, IllegalAccessException,
+    		IllegalArgumentException, InvocationTargetException {
+    	return new Reflector(clazz, args);
     }
     
-    public static Object constructClass0(Class<?> clazz, Object[] args)
+    private static Object constructClass0(Class<?> clazz, Object[] args)
     		throws InstantiationException, IllegalAccessException,
     		IllegalArgumentException, InvocationTargetException {
     	if (ArrayUtils.isEmpty(args)) {
@@ -253,6 +255,12 @@ public final class Reflector {
 	//-----Constructor-----//
 	public Reflector(Object obj) {
 		this.obj = obj;
+	}
+	
+	public Reflector(Class<?> clazz, Object... args)
+			throws InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
+		this.obj = constructClass0(clazz, args);
 	}
 	
 	//-----Public Methods-----//
