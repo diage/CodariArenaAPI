@@ -48,17 +48,17 @@ public final class Reflector {
 		if (argumentOpenerIndex != -1) {
 			String methodName = part.substring(0, argumentOpenerIndex);
 			if (part.charAt(argumentOpenerIndex + 1) == ')') {
-				obj = invokeMethod0(clazz, null, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY);
+				obj = invokeMethod0(clazz, obj, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY);
 			} else {
 				String[] argumentIndex = part.substring(argumentOpenerIndex + 1, part.indexOf(')')).split(",");
 				Object[] arguments = new Object[argumentIndex.length];
 				for (int i = 0; i < argumentIndex.length; i++) {
 					arguments[i] = args[Integer.valueOf(argumentIndex[i]) - 1];
 				}
-				obj = invokeMethod0(clazz, null, methodName, arguments);
+				obj = invokeMethod0(clazz, obj, methodName, arguments);
 			}
 		} else {
-			obj = getField0(clazz, null, part);
+			obj = getField0(clazz, obj, part);
 		}
 		return reflect(command.substring(commandSplit + 1, command.length()), obj, args);
 	}
