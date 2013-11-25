@@ -124,9 +124,7 @@ public class ConfigurationInput {
 	public <T extends ConfigurationSerializable> T getObject(Class<T> clazz, String key, T def) {
 		Object obj = this.get(key);
 		if (clazz.isInstance(obj)) {
-			@SuppressWarnings("unchecked")//Verified with Class.isInstance()
-			T result = (T) obj;
-			return result;
+			return clazz.cast(obj);
 		}
 		return def;
 	}
