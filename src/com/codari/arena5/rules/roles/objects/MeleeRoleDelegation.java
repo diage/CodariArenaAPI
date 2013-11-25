@@ -3,7 +3,7 @@ package com.codari.arena5.rules.roles.objects;
 import com.codari.arena5.objects.persistant.RoleSelectionObject;
 import com.codari.arena5.players.role.Role;
 
-public class MeleeRoleDelegation  implements RoleSelectionObject{
+public class MeleeRoleDelegation implements RoleSelectionObject{
 
 	@Override
 	public void interact() {
