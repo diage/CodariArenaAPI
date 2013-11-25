@@ -2,6 +2,8 @@ package com.codari.arena5.players.teams;
 
 import java.util.List;
 
+import org.bukkit.entity.Player;
+
 import com.codari.arena5.Arena;
 import com.codari.arena5.players.combatants.Combatant;
 /**
@@ -45,6 +47,8 @@ public interface Team {
 	 * @return A {@link List} of every other {@link Combatant} other than the provided team mate. 
 	 */
 	public List<Combatant> getTeamMates(Combatant combatant);
+	
+	public List<Player> getPlayers();
 	
 	public void setLeader(Combatant combatant);
 	
