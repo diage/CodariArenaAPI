@@ -1,25 +1,19 @@
 package com.codari.arena5.rules;
 
-import org.bukkit.Bukkit;
-import org.bukkit.event.HandlerList;
+import java.util.Collection;
+
 import org.bukkit.event.Listener;
 
-import com.codari.api5.Codari;
+import com.codari.arena5.Arena;
+import com.codari.arena5.players.combatants.Combatant;
 
-public abstract class WinCondition implements Listener {
-	//-----Fields-----//
-	protected boolean conditionMet;
+public interface WinCondition extends Listener {
+
+	public boolean conditionMet();
 	
-	//-----Public Methods-----//
-	public final boolean conditionMet() {
-		return this.conditionMet;
-	}
+	public void setRegistered(boolean registered);
 	
-	public final void setRegistered(boolean registered) {
-		if (registered) {
-			Bukkit.getPluginManager().registerEvents(this, Codari.INSTANCE);
-		} else {
-			HandlerList.unregisterAll(this);
-		}
-	}
+	public void initialize(Arena arena);
+	
+	public Collection<Combatant> getWinners();
 }

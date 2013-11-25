@@ -124,4 +124,6 @@ public interface ArenaBuilder {
 	 * @return True if successful, False otherwise.   
 	 */
 	public boolean registerPersistent(DelayedPersistentObject object, Time time, boolean override);
+
+	public GameRule getGameRule(); 
 }

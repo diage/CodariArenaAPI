@@ -25,7 +25,7 @@ public interface GameRule {
 	 * 
 	 * @param winCondition The condition to be added.
 	 */
-	public void addWinCondition(WinCondition winCondition);
+	public void addWinCondition(WinConditionTemplate winCondition);
 	/**
 	 * Add a win condition which is only valid before or after a certain point in time.
 	 * 
@@ -34,13 +34,13 @@ public interface GameRule {
 	 * @param after If this true, then the win condition will be valid after the time, otherwise it will be valid before the time. 
 	 * @return True if the win condition can possibly be met before the end of the game, false otherwise. 
 	 */
-	public boolean addWinCondition(WinCondition winCondition, Time time, boolean after);
+	public boolean addWinCondition(WinConditionTemplate winCondition, Time time, boolean after);
 	/**
 	 * Removes the provided win condition from the current selection of win conditions.
 	 * 
 	 * @param winCondition The win condition to remove. 
 	 */
-	public void removeWinCondition(WinCondition winCondition);
+	public void removeWinCondition(WinConditionTemplate winCondition);
 	/**
 	 * Set the duration of the match. Setting this more than once will overwrite the previous Match Duration.
 	 * 
@@ -76,11 +76,11 @@ public interface GameRule {
 	public Collection<TimedAction> getTimedActions();
 	
 	/**
-	 * Method to get all of the {@link WinCondition}s for this GameRule
+	 * Method to get all of the {@link WinConditionTemplate}s for this GameRule
 	 *  
 	 * @return A collection of WinConditions
 	 */
-	public Collection<WinCondition> getWinConditions();
+	public Collection<WinConditionTemplate> getWinConditions();
 	
 	/**
 	 * Method to get the TeamSize that has been set for this GameRule.
