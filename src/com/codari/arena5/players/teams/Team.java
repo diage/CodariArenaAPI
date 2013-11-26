@@ -57,6 +57,4 @@ public interface Team {
 	public void addToTeam(Combatant combatant);
 
 	public void removeFromTeam(Combatant combatant);
-
-	public boolean equals(Team other);
 }
