@@ -87,7 +87,7 @@ public interface ArenaManager {
 	 * 
 	 * @return The Arena which is built. Will return null if the ArenaBuilder is not properly built. 
 	 */
-	public Arena buildArena(ArenaBuilder arenaBuilder, String requestedName);
+	public Arena buildArena(String requestedName, ArenaBuilder arenaBuilder);
 	
 	/**
 	 * Method to get a new clean {@link ArenaBuilder}.
