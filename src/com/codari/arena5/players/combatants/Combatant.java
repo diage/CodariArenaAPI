@@ -65,4 +65,8 @@ public interface Combatant extends StatHolder {
 	public boolean leaveArena();
 	
 	public void setTeam(Team team);
+
+	public void setLeader(boolean isLeader);
+
+	public boolean checkIfLeader();
 }
