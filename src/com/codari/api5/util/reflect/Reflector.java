@@ -220,22 +220,22 @@ public final class Reflector {
 			return true;
 		}
 		switch (obj.getClass().getSimpleName()) {
-		case "Integer":
-			return clazz == int.class;
 		case "Boolean":
 			return clazz == boolean.class;
+		case "Byte":
+			return clazz == byte.class;
 		case "Character":
 			return clazz == char.class;
-		case "Float":
-			return clazz == float.class;
 		case "Double":
 			return clazz == double.class;
+		case "Float":
+			return clazz == float.class;
+		case "Integer":
+			return clazz == int.class;
 		case "Long":
 			return clazz == long.class;
 		case "Short":
 			return clazz == short.class;
-		case "Byte":
-			return clazz == byte.class;
 		default:
 			return false;
 		}
