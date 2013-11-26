@@ -219,31 +219,26 @@ public final class Reflector {
 		if (clazz.isInstance(obj)) {
 			return true;
 		}
-		if (obj instanceof Integer && clazz == int.class) {
-			return true;
+		switch (obj.getClass().getSimpleName()) {
+		case "Integer":
+			return clazz == int.class;
+		case "Boolean":
+			return clazz == boolean.class;
+		case "Character":
+			return clazz == char.class;
+		case "Float":
+			return clazz == float.class;
+		case "Double":
+			return clazz == double.class;
+		case "Long":
+			return clazz == long.class;
+		case "Short":
+			return clazz == short.class;
+		case "Byte":
+			return clazz == byte.class;
+		default:
+			return false;
 		}
-		if (obj instanceof Boolean && clazz == boolean.class) {
-			return true;
-		}
-		if (obj instanceof Character && clazz == char.class) {
-			return true;
-		}
-		if (obj instanceof Float && clazz == float.class) {
-			return true;
-		}
-		if (obj instanceof Double && clazz == double.class) {
-			return true;
-		}
-		if (obj instanceof Long && clazz == long.class) {
-			return true;
-		}
-		if (obj instanceof Short && clazz == short.class) {
-			return true;
-		}
-		if (obj instanceof Byte && clazz == byte.class) {
-			return true;
-		}
-		return false;
 	}
 	
 	//-------------------------Reflector Instance-------------------------//
