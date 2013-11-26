@@ -166,6 +166,7 @@ public final class BossHealthBar {
 		}
 	}
 	
+	@Deprecated
 	public static void displayLoadingBar(final String text, final String completeText, final Player player,
 			final int secondsDelay, final boolean loadUp){
 		int healthChangePerSecond = 300 / secondsDelay;
