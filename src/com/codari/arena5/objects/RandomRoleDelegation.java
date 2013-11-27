@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.roles.objects;
+package com.codari.arena5.objects;
 
 import com.codari.arena5.objects.persistant.RoleSelectionObject;
 import com.codari.arena5.players.role.Role;
