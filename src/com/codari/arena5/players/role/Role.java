@@ -25,5 +25,5 @@ public interface Role {
 	
 	public String getName();
 	public void addSkill(Skill skill);
-	public void swapRole(Role role);
+	public Role swapRole(Role role);
 }
