@@ -103,4 +103,6 @@ public interface ArenaManager {
 	public Role getNewRole(String name);
 
 	public void submitRole(Role role);
+
+	public Role getExistingRole(String name);
 }
