@@ -6,6 +6,7 @@ import org.bukkit.OfflinePlayer;
 import com.codari.api5.util.PlayerReference;
 import com.codari.arena5.objects.ArenaObject;
 import com.codari.arena5.players.combatants.Combatant;
+import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
 import com.codari.arena5.players.teams.TeamColor;
 import com.codari.arena5.rules.GameRule;
@@ -98,4 +99,8 @@ public interface ArenaManager {
 	
 	public void registerArenaObjecto(Class<? extends ArenaObject> clazz);
 	public ArenaObject createObjecto(String name, Location location);
+
+	public Role getNewRole(String name);
+
+	public void submitRole(Role role);
 }
