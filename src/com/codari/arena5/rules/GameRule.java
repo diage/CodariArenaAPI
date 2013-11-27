@@ -3,6 +3,7 @@ package com.codari.arena5.rules;
 import java.util.Collection;
 
 import com.codari.api5.util.Time;
+import com.codari.arena5.rules.roles.RoleDeclaration;
 import com.codari.arena5.rules.roles.RoleDelegation;
 
 /**
@@ -96,6 +97,21 @@ public interface GameRule {
 	 */
 	public Time getMatchDuration();
 	
+	/**
+	 * Method to add a {@link RoleDeclaration} to the Game Rule. One must be added for the arena to be valid. 
+	 * 
+	 * @param roleDeclaration The declaration type to be added. 
+	 * 
+	 * @return true if successful, false if it is an invalid roleDeclaration. 
+	 */
+	public boolean addRoleDeclaration(RoleDeclaration roleDeclaration);
+	
+	/**
+	 * Method to get the {@link RoleDeclaration} for this GameRule. 
+	 * 
+	 * @return The RoleDeclaration. 
+	 */
+	public RoleDeclaration getRoleDeclaration();
 	/**
 	 * Method to add a {@link RoleDelegation} to the Game Rule. One must be added for the arena to be valid. 
 	 * 
