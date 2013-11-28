@@ -24,6 +24,6 @@ public interface Role {
 	public void sneak(Combatant combatant);
 	
 	public String getName();
-	public void addSkill(Skill skill);
+	public Role addSkill(Skill skill);
 	public Role swapRole(Role role);
 }

@@ -97,12 +97,14 @@ public interface ArenaManager {
 	 */
 	public ArenaBuilder getArenaBuider(GameRule gameRule) throws IllegalArgumentException;
 	
-	public void registerArenaObjecto(Class<? extends ArenaObject> clazz);
-	public ArenaObject createObjecto(String name, Location location);
+	public void registerArenaObject(Class<? extends ArenaObject> clazz);
+	public ArenaObject createObject(String name, Location location);
 
 	public Role getNewRole(String name);
 
-	public void submitRole(Role role);
+	public boolean submitRole(String arenaName, Role role);
 
-	public Role getExistingRole(String name);
+	public Role getExistingRole(String arenaName, String roleName);
+
+	public void clearRole(String arenaName, String roleName);
 }
