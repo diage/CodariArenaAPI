@@ -3,7 +3,7 @@ package com.codari.arena5.rules.wincondition;
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 
-import com.codari.api5.Codari;
+import com.codari.api5.CodariI;
 
 public abstract class WinConditionTemplate implements WinCondition {
 	//-----Fields-----//
@@ -18,7 +18,7 @@ public abstract class WinConditionTemplate implements WinCondition {
 	@Override
 	public final void setRegistered(boolean registered) {
 		if (registered) {
-			Bukkit.getPluginManager().registerEvents(this, Codari.INSTANCE);
+			Bukkit.getPluginManager().registerEvents(this, CodariI.INSTANCE);
 		} else {
 			HandlerList.unregisterAll(this);
 		}

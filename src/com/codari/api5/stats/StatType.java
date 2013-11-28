@@ -5,7 +5,7 @@ import java.util.Arrays;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
-import com.codari.api5.Codari;
+import com.codari.api5.CodariI;
 
 public final class StatType {
 	//-----Static Methods-----//
@@ -91,7 +91,7 @@ public final class StatType {
 		//-----Constructor-----//
 		public Builder(String name) throws IllegalArgumentException {
 			name = StringUtils.normalizeSpace(name).trim();
-			if (!Codari.INSTANCE.getStatFactory().isValidStatName(name)) {
+			if (!CodariI.INSTANCE.getStatFactory().isValidStatName(name)) {
 				throw new IllegalArgumentException(name + " is not a valid stat name");
 			}
 			this.name = name;

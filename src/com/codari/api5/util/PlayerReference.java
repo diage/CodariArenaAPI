@@ -20,7 +20,7 @@ import org.bukkit.metadata.MetadataValue;
 import org.bukkit.metadata.Metadatable;
 import org.bukkit.plugin.Plugin;
 
-import com.codari.api5.Codari;
+import com.codari.api5.CodariI;
 
 @SerializableAs("Player_Reference")
 public final class PlayerReference implements Metadatable, OfflinePlayer, Comparable<PlayerReference> {
@@ -30,7 +30,7 @@ public final class PlayerReference implements Metadatable, OfflinePlayer, Compar
 	//-----Static Constructor-----//
 	public static void _(){}
 	static {
-		Bukkit.getPluginManager().registerEvents(new PlayerReferenceUpdater(), Codari.INSTANCE);
+		Bukkit.getPluginManager().registerEvents(new PlayerReferenceUpdater(), CodariI.INSTANCE);
 		ConfigurationSerialization.registerClass(PlayerReference.class, "Player_Reference");
 	}
 	
@@ -131,22 +131,22 @@ public final class PlayerReference implements Metadatable, OfflinePlayer, Compar
 	
 	@Override
 	public List<MetadataValue> getMetadata(String metadataKey) {
-		return Codari.INSTANCE.getMetadataManager().getPlayerMetadataStore().getMetadata(this, metadataKey);
+		return CodariI.INSTANCE.getMetadataManager().getPlayerMetadataStore().getMetadata(this, metadataKey);
 	}
 	
 	@Override
 	public boolean hasMetadata(String metadataKey) {
-		return Codari.INSTANCE.getMetadataManager().getPlayerMetadataStore().hasMetadata(this, metadataKey);
+		return CodariI.INSTANCE.getMetadataManager().getPlayerMetadataStore().hasMetadata(this, metadataKey);
 	}
 	
 	@Override
 	public void removeMetadata(String metadataKey, Plugin owningPlugin) {
-		Codari.INSTANCE.getMetadataManager().getPlayerMetadataStore().removeMetadata(this, metadataKey, owningPlugin);
+		CodariI.INSTANCE.getMetadataManager().getPlayerMetadataStore().removeMetadata(this, metadataKey, owningPlugin);
 	}
 	
 	@Override
 	public void setMetadata(String metadataKey, MetadataValue newMetadataValue) {
-		Codari.INSTANCE.getMetadataManager().getPlayerMetadataStore().setMetadata(this, metadataKey, newMetadataValue);
+		CodariI.INSTANCE.getMetadataManager().getPlayerMetadataStore().setMetadata(this, metadataKey, newMetadataValue);
 	}
 	
 	//-----Private Methods-----//
@@ -200,7 +200,7 @@ public final class PlayerReference implements Metadatable, OfflinePlayer, Compar
 		
 		@EventHandler(priority = EventPriority.LOWEST)
 		public void playerQuit(final PlayerQuitEvent e) {
-			Bukkit.getScheduler().runTask(Codari.INSTANCE, new Runnable() {
+			Bukkit.getScheduler().runTask(CodariI.INSTANCE, new Runnable() {
 				@Override
 				public void run() {
 					PlayerReference.instanceOf(e.getPlayer()).update();

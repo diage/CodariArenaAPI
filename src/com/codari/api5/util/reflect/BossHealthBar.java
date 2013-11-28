@@ -7,7 +7,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.codari.api5.Codari;
+import com.codari.api5.CodariI;
 
 @SuppressWarnings("deprecation")
 public final class BossHealthBar {
@@ -91,7 +91,7 @@ public final class BossHealthBar {
 				public void run(){
 					sendPacket(player, destroyEntityPacket);
 				}
-			}.runTaskLater(Codari.INSTANCE, duration);
+			}.runTaskLater(CodariI.INSTANCE, duration);
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException |
 				InvocationTargetException | ClassNotFoundException ex) {
 			ex.printStackTrace();
@@ -150,7 +150,7 @@ public final class BossHealthBar {
 										ex.printStackTrace();
 									}
 								}
-							}.runTaskLater(Codari.INSTANCE, 40L);
+							}.runTaskLater(CodariI.INSTANCE, 40L);
 							
 							this.cancel();
 						}
@@ -159,7 +159,7 @@ public final class BossHealthBar {
 						ex.printStackTrace();
 					}
 				}
-			}.runTaskTimer(Codari.INSTANCE, delay, delay);
+			}.runTaskTimer(CodariI.INSTANCE, delay, delay);
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException |
 				InvocationTargetException | ClassNotFoundException ex) {
 			ex.printStackTrace();

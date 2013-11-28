@@ -1,5 +1,7 @@
 package com.codari.arena5.players.combatants;
 
+import org.bukkit.entity.Player;
+
 import com.codari.api5.stats.StatHolder;
 import com.codari.api5.util.PlayerReference;
 import com.codari.arena5.Arena;
@@ -69,4 +71,6 @@ public interface Combatant extends StatHolder {
 	public void setLeader(boolean isLeader);
 
 	public boolean checkIfLeader();
+	
+	public Player getPlayer();
 }
