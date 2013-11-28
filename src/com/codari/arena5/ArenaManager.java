@@ -1,10 +1,8 @@
 package com.codari.arena5;
 
-import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 
 import com.codari.api5.util.PlayerReference;
-import com.codari.arena5.objects.ArenaObject;
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
@@ -96,9 +94,6 @@ public interface ArenaManager {
 	 * @return A reference to a clean {@link ArenaBuilder}.
 	 */
 	public ArenaBuilder getArenaBuider(GameRule gameRule) throws IllegalArgumentException;
-	
-	public void registerArenaObject(Class<? extends ArenaObject> clazz);
-	public ArenaObject createObject(String name, Location location);
 
 	public Role getNewRole(String name);
 
