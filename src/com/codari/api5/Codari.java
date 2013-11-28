@@ -5,6 +5,7 @@ import org.bukkit.plugin.Plugin;
 import com.codari.api5.metadata.MetadataManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.ArenaManager;
+import com.codari.arena5.Library;
 
 /**
  * Codari instance of {@link org.bukkit.plugin.Plugin}.
@@ -28,4 +29,6 @@ public interface Codari extends Plugin {
 	public ArenaManager getArenaManager();
 	
 	public StatFactory getStatFactory();
+	
+	public Library getLibrary();
 }
