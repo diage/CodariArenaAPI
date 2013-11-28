@@ -1,4 +1,4 @@
-package com.codari.arena5.rules;
+package com.codari.arena5.rules.wincondition;
 
 import java.util.Collection;
 

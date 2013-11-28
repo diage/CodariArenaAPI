@@ -1,4 +1,4 @@
-package com.codari.arena5.rules;
+package com.codari.arena5.rules.wincondition;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
@@ -23,6 +23,4 @@ public abstract class WinConditionTemplate implements WinCondition {
 			HandlerList.unregisterAll(this);
 		}
 	}
-	
-	
 }

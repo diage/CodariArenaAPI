@@ -1,4 +1,4 @@
-package com.codari.arena5.rules;
+package com.codari.arena5.rules.timedaction;
 
 import com.codari.api5.util.Time;
 

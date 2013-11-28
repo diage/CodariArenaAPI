@@ -3,8 +3,10 @@ package com.codari.arena5.rules;
 import java.util.Collection;
 
 import com.codari.api5.util.Time;
-import com.codari.arena5.rules.roles.RoleDeclaration;
-import com.codari.arena5.rules.roles.RoleDelegation;
+import com.codari.arena5.rules.roledelegation.RoleDeclaration;
+import com.codari.arena5.rules.roledelegation.RoleDelegation;
+import com.codari.arena5.rules.timedaction.TimedAction;
+import com.codari.arena5.rules.wincondition.WinConditionTemplate;
 
 /**
  * Game rules will be static objects inserted into the time line upon registration. They will define passive actions, 

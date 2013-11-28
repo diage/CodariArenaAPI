@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.roles;
+package com.codari.arena5.rules.roledelegation;
 
 import java.util.Collection;
 
@@ -34,6 +34,8 @@ public interface RoleDelegation {
 	 */
 	public RoleDelegationType getRoleDelegationTechnique();
 	
+	//FIXME: does not implement .equals, need to look at closer
+	//FIXME: will only work if we just ever forloop through it and never need to randomly access. 
 	/**
 	 * Method to get all of the RoleSelectionObject for this Arena. 
 	 * 

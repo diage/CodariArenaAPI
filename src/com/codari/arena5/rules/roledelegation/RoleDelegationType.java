@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.roles;
+package com.codari.arena5.rules.roledelegation;
 
 public enum RoleDelegationType {
 	RANDOM,
