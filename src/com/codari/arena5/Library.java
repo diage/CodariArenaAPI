@@ -9,13 +9,13 @@ import com.codari.arena5.rules.wincondition.WinCondition;
 
 public interface Library {
 
-	public ArenaObject createObject(String name, Location location);
-
 	public WinCondition createWinCondition(String name, Location location);
 
 	public TimedAction createTimedAction(String name, Location location);
 
 	public RoleDeclaration createRoleDeclaration(String name, Location location);
+	
+	public ArenaObject createObject(String name, Location location);
 
 	public void registerWinCondition(Class<? extends WinCondition> clazz);
 
