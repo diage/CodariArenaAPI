@@ -31,4 +31,7 @@ public interface Arena {
 
 	public ArenaBuilder getArenaBuilder();
 	
+	public boolean start(Team... teams);
+	
+	public void stop();
 }
