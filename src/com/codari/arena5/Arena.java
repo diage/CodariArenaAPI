@@ -3,6 +3,7 @@ package com.codari.arena5;
 import java.util.Map;
 
 import com.codari.arena5.players.teams.Team;
+import com.codari.arena5.rules.GameRule;
 
 /**
  * Current representation of the primary Arena. 
@@ -28,8 +29,8 @@ public interface Arena {
 	 * @return A map containing the TeamColor to the Team. 
 	 */
 	public Map<String, Team> getTeams();
-
-	public ArenaBuilder getArenaBuilder();
+	
+	public GameRule getGameRule();
 	
 	public boolean start(Team... teams);
 	
