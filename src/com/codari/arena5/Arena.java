@@ -35,4 +35,6 @@ public interface Arena {
 	public boolean start(Team... teams);
 	
 	public void stop();
+	
+	public boolean isMatchInProgress();
 }
