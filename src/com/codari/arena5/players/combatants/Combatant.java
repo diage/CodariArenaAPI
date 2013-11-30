@@ -73,4 +73,6 @@ public interface Combatant extends StatHolder {
 	public boolean checkIfLeader();
 	
 	public Player getPlayer();
+	
+	public Role swapRole(Role role);
 }
