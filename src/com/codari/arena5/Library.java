@@ -16,8 +16,6 @@ public interface Library {
 	public RoleDeclaration createRoleDeclaration(String name, Location location);
 	
 	public ArenaObject createObject(String name, Location location);
-	
-	public void registerStuff(LibraryRegister register);
 
 	public void registerWinCondition(Class<? extends WinCondition> clazz);
 
