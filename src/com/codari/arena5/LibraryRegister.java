@@ -6,8 +6,8 @@ import com.codari.arena5.rules.timedaction.TimedAction;
 import com.codari.arena5.rules.wincondition.WinCondition;
 
 public interface LibraryRegister {
-	public WinCondition[] getWinConditions();
-	public TimedAction[] getTimedActions();
-	public RoleDeclaration[] getRoleDeclarations();
-	public ArenaObject[] getArenaObjects();
+	public Class<WinCondition>[] getWinConditions();
+	public Class<TimedAction>[] getTimedActions();
+	public Class<RoleDeclaration>[] getRoleDeclarations();
+	public Class<ArenaObject>[] getArenaObjects();
 }
