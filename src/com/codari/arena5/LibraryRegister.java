@@ -9,5 +9,5 @@ public interface LibraryRegister {
 	public Class<? extends WinCondition>[] getWinConditions();
 	public Class<? extends TimedAction>[] getTimedActions();
 	public Class<? extends RoleDeclaration>[] getRoleDeclarations();
-	public Class<? extends ArenaObject>[] getArenaObjects();
+	public Class<? extends ArenaObject>[] getArenaObjects();//
 }
