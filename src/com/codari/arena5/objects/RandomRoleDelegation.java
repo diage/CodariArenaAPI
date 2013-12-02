@@ -28,5 +28,5 @@ public class RandomRoleDelegation implements RoleSelectionObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 }
