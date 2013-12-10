@@ -102,4 +102,6 @@ public interface ArenaManager {
 	public Role getExistingRole(String arenaName, String roleName);
 
 	public void clearRole(String arenaName, String roleName);
+
+	public boolean addToQueue(String arenaName, Team team);
 }
