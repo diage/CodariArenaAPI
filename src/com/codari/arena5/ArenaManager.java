@@ -2,7 +2,6 @@ package com.codari.arena5;
 
 import org.bukkit.OfflinePlayer;
 
-import com.codari.api5.player.CodariPlayer;
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
