@@ -76,6 +76,7 @@ public interface Combatant extends StatHolder {
 	
 	public Role swapRole(Role role);
 	
+	public boolean inArena();
 	
 	public boolean isHotbarActive();
 	public void setHotbarActibe(boolean active);
