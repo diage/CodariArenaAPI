@@ -18,7 +18,7 @@ public class HotbarSelectEvent extends Event {
 	//-----Fields-----//
 	private final Combatant combatant;
 	private final HotbarSlot slot;
-	private final ItemStack item;
+	private ItemStack item;
 	
 	//-----Constructor-----//
 	public HotbarSelectEvent(Combatant combatant, HotbarSlot slot) {
@@ -38,6 +38,10 @@ public class HotbarSelectEvent extends Event {
 	
 	public ItemStack getItem() {
 		return this.item;
+	}
+	
+	public void setItem(ItemStack item) {
+		this.item = item;
 	}
 	
 	@Override

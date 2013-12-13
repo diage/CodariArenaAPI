@@ -36,4 +36,8 @@ public enum HotbarSlot {
 	public ItemStack getItem(Player player) {
 		return player.getInventory().getItem(this.inventorySlot);
 	}
+	
+	public void setItem(Player player, ItemStack item) {
+		player.getInventory().setItem(this.inventorySlot, item);
+	}
 }
