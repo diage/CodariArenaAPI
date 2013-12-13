@@ -1,11 +1,14 @@
 package com.codari.api5.io;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.EnumUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+
+import com.google.common.base.Function;
 
 public class ConfigurationInput {
 	//-----Fields-----//
@@ -128,4 +131,21 @@ public class ConfigurationInput {
 		}
 		return def;
 	}
+	
+	public <I> I get(ConfigurationInput.InputFunction<I> inputFunction) {
+		return this.get(inputFunction, null);
+	}
+	
+	public <I> I get(ConfigurationInput.InputFunction<I> inputFunction, I def) {
+		I result = inputFunction.apply(this.args);
+		if (result == null) {
+			result = def;
+		}
+		return result;
+	}
+	
+	//-----Input Functions-----//
+	public static interface InputFunction<I> extends Function<Map<String, Object>, I>{}
+	public static interface ArrayInputFunction<I> extends InputFunction<I[]>{}
+	public static interface CollectionInputFunction<I> extends InputFunction<Collection<I>>{}
 }

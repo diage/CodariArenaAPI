@@ -2,7 +2,7 @@ package com.codari.arena5;
 
 import org.bukkit.OfflinePlayer;
 
-import com.codari.api5.util.PlayerReference;
+import com.codari.api5.player.CodariPlayer;
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
@@ -37,16 +37,6 @@ public interface ArenaManager {
 	 * @return The requested {@link Combatant}
 	 */
 	public Combatant getCombatant(OfflinePlayer player);
-	
-	/**
-	 * Method to grab a {@link Combatant} from it's {@link PlayerReference}.
-	 * 	Refer to {@link PlayerReference} for more information. 
-	 * 
-	 * @param playerReference The {@link PlayerReference} for the {@link Combatant} in question. 
-	 * 
-	 * @return The requested {@link Combatant}
-	 */
-	public Combatant getCombatant(PlayerReference playerReference);
 	
 	/**
 	 * Method to grab the team provided an {@link Arena} and a {@link TeamColor}.

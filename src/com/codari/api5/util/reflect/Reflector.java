@@ -8,30 +8,96 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.bukkit.Bukkit;
 
-public final class Reflector {
+import com.codari.api5.util.SimpleWrapper;
+
+
+/**
+ * Utility and wrapper class that aids the reflection process as well as provides
+ * further utility for accessing classes in craftbukkit and the minecraft server.
+ * <p>
+ * This class provides static methods that abstract the process of reflection by
+ * doing most of the work for you as well as handling any exceptions caused by a
+ * failed reflection and throwing {@link ReflectionException} instead with the
+ * cause being the exception that was thrown during reflection.
+ * <p>
+ * This class further abstracts reflection by wrapping any objects returned through
+ * reflection within an instance of this class. Objects wrapped can be obtained with
+ * the methods {@link #getHandle()} and {@link #getHandleAs(Class) getHandleAs()}. It is
+ * important to note that instances of <code>Reflector</code> are immutable.
+ * <p>
+ * It is important to note that reflection methods in this class ignore visibility
+ * modifiers such as <code>private</code> and ignores the <code>final</code> modifier
+ * on fields. The reason for this is because this class assumes that its users know
+ * what they are reflecting and know if they should do so or not.
+ * 
+ * @author Soren025
+ */
+public final class Reflector extends SimpleWrapper<Object> {
 	//-----Constants-----//
+	private final static Field MODIFIERS = getFieldObject(Field.class, "modifiers");
+	static {
+		MODIFIERS.setAccessible(true);
+	}
+	
 	/**
-	 * Minecraft version of the running craftbukkit server.
+	 * Minecraft version of the running craftbukkit server used at the end of craftbukkit's
+	 * package names.
 	 */
 	public final static String MINECRAFT_VERSION = Bukkit.getServer() != null ?
 			Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3] : "UNKNOWN";
 	/**
-	 * Base class name path for NMS classes "net.minecraft.server.<minecraft version>"
+	 * Base class path for NMS classes <code>net.minecraft.server.{@link #MINECRAFT_VERSION}</code>.
 	 */
-	public final static String NMS_PATH = "net.minecraft.server." + MINECRAFT_VERSION;
+	public final static String NMS_PATH = "net.minecraft.server." + MINECRAFT_VERSION + ".";
 	/**
-	 * Base class name path for CB classes "org.bukkit.craftbukkit.<minecraft version>"
+	 * Base class path for CB classes </code>org.bukkit.craftbukkit.{@link #MINECRAFT_VERSION}</code>.
 	 */
-	public final static String CB_PATH = "org.bukkit.craftbukkit." + MINECRAFT_VERSION;
+	public final static String CB_PATH = "org.bukkit.craftbukkit." + MINECRAFT_VERSION + ".";
 	
 	//-----Static Methods-----//
+	public static Reflector executeExpression(Object obj, String expression, Object... args) {
+		String[] parts = expression.split("\\.");
+		for (String part : parts) {
+			int argumentOpenerIndex = part.indexOf('(');
+			if (argumentOpenerIndex != -1) {
+				String methodName = part.substring(0, argumentOpenerIndex);
+				if (part.charAt(argumentOpenerIndex + 1) == ')') {
+					obj = invokeMethod0(obj.getClass(), obj, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY);
+				} else {
+					String[] argumentIndex = part.substring(
+							argumentOpenerIndex + 1, part.indexOf(')')).split(",");
+					Object[] arguments = new Object[argumentIndex.length];
+					for (int i = 0; i < argumentIndex.length; i++) {
+						arguments[i] = args[Integer.valueOf(argumentIndex[i]) - 1];
+					}
+					obj = invokeMethod0(obj.getClass(), obj, methodName, arguments);
+				}
+			} else {
+				obj = readField0(obj.getClass(), obj, part);
+			}
+		}
+		return new Reflector(obj);
+	}
 	
 	//-------------------------Method Reflection-------------------------//
 	
-	public static Method getMethodObject(Class<?> clazz, String methodName, Class<?>... parameterTypes) {
+	/**
+	 * Gets the <code>Method</code> object for a given <code>Class</code> that matches the provided
+	 * name and parameter types, including methods declared in super classes as well.
+	 * 
+	 * @param clazz The <code>Class</code> object to search for the method in.
+	 * @param methodName The name of the method.
+	 * @param parameterTypes The parameter array.
+	 * @return The <code>Method</code> object that matches the provided name and parameter types.
+	 * 
+	 * @throws ReflectionException Thrown if the method could not be found.
+	 */
+	public static Method getMethodObject(Class<?> clazz, String methodName, Class<?>... parameterTypes)
+			throws ReflectionException {
 		for (; clazz != null; clazz = clazz.getSuperclass()) {
 			for (Method m : clazz.getDeclaredMethods()) {
 				if (m.getName().equals(methodName) && Arrays.equals(m.getParameterTypes(), parameterTypes)) {
@@ -39,11 +105,13 @@ public final class Reflector {
 				}
 			}
 		}
-		//TODO needs better choice of exception and message
-		throw new IllegalArgumentException("couldnt find method named " + methodName + " in the class " + clazz);
+		NoSuchMethodException ex = new NoSuchMethodException(clazz + "." + methodName +
+				argumentTypesToString(parameterTypes));
+		throw new ReflectionException(ex);
 	}
 	
-	private static Method getMethodObject0(Class<?> clazz, String methodName, Object[] args) {
+	private static Method getMethodObject0(Class<?> clazz, String methodName, Object[] args)
+			throws ReflectionException {
 		for (; clazz != null; clazz = clazz.getSuperclass()) {
 			for (Method m : clazz.getDeclaredMethods()) {
 				if (m.getName().equals(methodName) && isMatch(m.getParameterTypes(), args)) {
@@ -51,39 +119,95 @@ public final class Reflector {
 				}
 			}
 		}
-		//TODO needs better choice of exception and message
-		throw new IllegalArgumentException("couldnt find method named " + methodName + " in the class " + clazz);
+		NoSuchMethodException ex = new NoSuchMethodException(clazz + "." + methodName +
+				argumentTypesToString(ClassUtils.toClass(args)));
+		throw new ReflectionException("No match for object arguments", ex);
 	}
 	
+	/**
+	 * Invokes a given <code>Method</code> object.
+	 * 
+	 * @param method The <code>Method</code> object to invoke.
+	 * @param obj The <code>Object</code> to invoke the method on.
+	 * @param args The arguments to pass into the method.
+	 * @return An instance of this class wrapping the <code>Object</code> returned by the
+	 * 		method. The <code>Object</code> wrapped is <code>null</code> if the return type
+	 * 		of the method is <code>void</code>.
+	 * 
+	 * @throws ReflectionException Thrown if the method failed to invoke for any reason.
+	 */
 	public static Reflector invokeMethodObject(Method method, Object obj, Object... args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+			throws ReflectionException {
 		return new Reflector(invokeMethodObject0(method, obj, args));
 	}
 	
 	private static Object invokeMethodObject0(Method method, Object obj, Object[] args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		method.setAccessible(true);
-		return method.invoke(obj, args);
+			throws ReflectionException {
+		try {
+			method.setAccessible(true);
+			return method.invoke(obj, args);
+		} catch (InvocationTargetException ex) {
+			throw new ReflectionException(ex.getCause());
+		} catch (Throwable ex) {
+			throw new ReflectionException(ex);
+		}
 	}
 	
+	/**
+	 * Searches for and invokes the method for a given <code>Object</code> that matches
+	 * the provided name along with being able to accept the provided arguments.
+	 * 
+	 * @param obj The <code>Object</code> to invoke the method on.
+	 * @param methodName The name of the method.
+	 * @param args The arguments to pass into the method.
+	 * @return An instance of this class wrapping the <code>Object</code> returned by the
+	 * 		method. The <code>Object</code> wrapped is <code>null</code> if the return type
+	 * 		of the method is <code>void</code>.
+	 * 
+	 * @throws ReflectionException Thrown if the method failed to invoke for any reason.
+	 */
 	public static Reflector invokeMethod(Object obj, String methodName, Object... args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+			throws ReflectionException {
 		return new Reflector(invokeMethod0(obj.getClass(), obj, methodName, args));
 	}
 	
+	/**
+	 * Searches for and invokes the static method for a given <code>Class</code> that matches
+	 * the provided name along with being able to accept the provided arguments.
+	 * 
+	 * @param clazz The <code>Class</code> object to invoke the static method on.
+	 * @param methodName The name of the static method.
+	 * @param args The arguments to pass into the static method.
+	 * @return An instance of this class wrapping the <code>Object</code> returned by the
+	 * 		method. The <code>Object</code> wrapped is <code>null</code> if the return type
+	 * 		of the method is <code>void</code>.
+	 * 
+	 * @throws ReflectionException Thrown if the static method failed to invoke for any reason.
+	 */
 	public static Reflector invokeStaticMethod(Class<?> clazz, String methodName, Object... args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+			throws ReflectionException {
 		return new Reflector(invokeMethod0(clazz, null, methodName, args));
 	}
 	
 	private static Object invokeMethod0(Class<?> clazz, Object obj, String methodName, Object[] args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+			throws ReflectionException {
 		return invokeMethodObject0(getMethodObject0(clazz, methodName, args), obj, args);
 	}
 	
 	//-------------------------Field Reflection-------------------------//
 	
-	public static Field getFieldObject(Class<?> clazz, String fieldName) {
+	/**
+	 * Gets the <code>Field</code> object for a given <code>Class</code> that matches
+	 * the provided name.
+	 * 
+	 * @param clazz The <code>Class</code> object to search for the field in.
+	 * @param fieldName The name of the field.
+	 * @return The <code>Field</code> object that matches the provided name.
+	 * 
+	 * @throws ReflectionException Thrown if the field could not be found.
+	 */
+	public static Field getFieldObject(Class<?> clazz, String fieldName)
+			throws ReflectionException {
 		for (; clazz != null; clazz = clazz.getSuperclass()) {
 			for (Field f : clazz.getDeclaredFields()) {
 				if (f.getName().equals(fieldName)) {
@@ -91,70 +215,90 @@ public final class Reflector {
 				}
 			}
 		}
-		//TODO needs better choice of exception and message
-		throw new IllegalArgumentException("couldnt find field named " + fieldName + " in the class " + clazz);
+		NoSuchFieldException ex = new NoSuchFieldException(clazz + "." + fieldName);
+		throw new ReflectionException(ex);
 	}
 	
 	public static Reflector readFieldObject(Field field, Object obj)
-			throws IllegalArgumentException, IllegalAccessException {
+			throws ReflectionException {
 		return new Reflector(readFieldObject0(field, obj));
 	}
 	
 	private static Object readFieldObject0(Field field, Object obj)
-			throws IllegalArgumentException, IllegalAccessException {
-		field.setAccessible(true);
-		return field.get(obj);
+			throws ReflectionException {
+		try {
+			field.setAccessible(true);
+			return field.get(obj);
+		} catch (Throwable ex) {
+			throw new ReflectionException(ex);
+		}
 	}
 	
 	public static Reflector readField(Object obj, String fieldName)
-			throws IllegalArgumentException, IllegalAccessException {
+			throws ReflectionException {
 		return new Reflector(readField0(obj.getClass(), obj, fieldName));
 	}
 	
 	public static Reflector readStaticField(Class<?> clazz, String fieldName)
-			throws IllegalArgumentException, IllegalAccessException {
+			throws ReflectionException {
 		return new Reflector(readField0(clazz, null, fieldName));
 	}
 	
 	private static Object readField0(Class<?> clazz, Object obj, String fieldName)
-			throws IllegalArgumentException, IllegalAccessException {
+			throws ReflectionException {
 		return readFieldObject0(getFieldObject(clazz, fieldName), obj);
 	}
 	
 	public static void writeFieldObject(Field field, Object obj, Object value)
-			throws IllegalArgumentException, IllegalAccessException {
-		writeFieldObject0(field, obj, value, true);
+			throws ReflectionException {
+		try {
+			field.setAccessible(true);
+			overrideFinal(field);
+			field.set(obj, value);
+		} catch (Throwable ex) {
+			throw new ReflectionException(ex);
+		}
 	}
 	
-	public static void writeFieldObject0(Field field, Object obj, Object value, boolean ignoreFinal)
+	private static void overrideFinal(Field field)
 			throws IllegalArgumentException, IllegalAccessException {
-		field.setAccessible(true);
-		if (ignoreFinal) {
-			writeField0(field.getClass(), field, "modifiers", field.getModifiers() & ~Modifier.FINAL, false);
-		}
-		field.set(obj, value);
+		MODIFIERS.set(field, field.getModifiers() & ~Modifier.FINAL);
 	}
 	
 	public static void writeField(Object obj, String fieldName, Object value)
-			throws IllegalArgumentException, IllegalAccessException {
-		writeField0(obj.getClass(), obj, fieldName, value, true);
+			throws ReflectionException {
+		writeField0(obj.getClass(), obj, fieldName, value);
 	}
 	
 	public static void writeStaticField(Class<?> clazz, String fieldName, Object value)
-			throws IllegalArgumentException, IllegalAccessException {
-		writeField0(clazz, null, fieldName, value, true);
+			throws ReflectionException {
+		writeField0(clazz, null, fieldName, value);
 	}
 	
-	private static void writeField0(Class<?> clazz, Object obj, String fieldName, Object value, boolean ignoreFinal)
-			throws IllegalArgumentException, IllegalAccessException {
-		writeFieldObject0(getFieldObject(clazz, fieldName), obj, value, ignoreFinal);
+	private static void writeField0(Class<?> clazz, Object obj, String fieldName, Object value)
+			throws ReflectionException {
+		writeFieldObject(getFieldObject(clazz, fieldName), obj, value);
 	}
 	
 	//-------------------------Constructor Reflection-------------------------//
 	
+	/**
+	 * Gets the <code>Constructor</code> object for a given <code>Class</code> that
+	 * matches the provided parameter types.
+	 * 
+	 * @param clazz The <code>Class</code> object to search for the method in.
+	 * @param parameterTypes The parameter array.
+	 * @return The <code>Method</code> object that matches the provided parameter types.
+	 * 
+	 * @throws ReflectionException Thrown if the constructor could not be found.
+	 */
 	public static <T> Constructor<T> getConstructorObject(Class<T> clazz, Class<?>... parameterTypes)
-			throws NoSuchMethodException, SecurityException {
-		return clazz.getDeclaredConstructor(parameterTypes);
+			throws ReflectionException {
+		try {
+			return clazz.getDeclaredConstructor(parameterTypes);
+		} catch (Throwable ex) {
+			throw new ReflectionException(ex);
+		}
 	}
 	
 	private static Constructor<?> getConstructorObject0(Class<?> clazz, Object[] args) {
@@ -163,42 +307,89 @@ public final class Reflector {
 				return c;
 			}
 		}
-		//TODO needs better choice of exception and message
-		throw new IllegalArgumentException("couldnt find constructor in the class " + clazz);
+		NoSuchMethodException ex = new NoSuchMethodException(clazz + ".<init>" +
+				argumentTypesToString(ClassUtils.toClass(args)));
+		throw new ReflectionException("No match for object arguments", ex);
 	}
 	
+	/**
+	 * Invokes a given <code>Constructor</code> object.
+	 * 
+	 * @param constructor The <code>Constructor</code> object to invoke.
+	 * @param args The arguments to pass into the constructor.
+	 * @return An instance of this class wrapping the constructed <code>Object</code>.
+	 * 
+	 * @throws ReflectionException Thrown if the constructor failed to invoke for any reason.
+	 */
 	public static Reflector invokeConstructorObject(Constructor<?> constructor, Object... args)
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException {
+			throws ReflectionException {
 		return new Reflector(invokeConstructorObject0(constructor, args));
 	}
 	
 	private static Object invokeConstructorObject0(Constructor<?> constructor, Object[] args)
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException {
-		return constructor.newInstance(args);
+			throws ReflectionException {
+		try {
+			constructor.setAccessible(true);
+			return constructor.newInstance(args);
+		} catch (InvocationTargetException ex) {
+			throw new ReflectionException(ex.getCause());
+		} catch (Throwable ex) {
+			throw new ReflectionException(ex);
+		}
 	}
 	
+	/**
+	 * Searches for and invokes the constructor for a given <code>Class</code> that
+	 * is able to accept the provided arguments.
+	 * 
+	 * @param clazz The <code>Class</code> object to construct.
+	 * @param args The arguments to pass into the constructor.
+	 * @return An instance of this class wrapping the constructed <code>Object</code>.
+	 * 	
+	 * @throws ReflectionException Thrown if the constructor failed to invoke for any reason.
+	 */
 	public static Reflector invokeConstructor(Class<?> clazz, Object... args)
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException {
+			throws ReflectionException {
 		return new Reflector(invokeConstructor0(clazz, args));
 	}
 	
 	private static Object invokeConstructor0(Class<?> clazz, Object[] args)
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException {
+			throws ReflectionException {
 		return invokeConstructorObject0(getConstructorObject0(clazz, args), args);
 	}
 	
 	//-------------------------Class Reflection-------------------------//
 	
-	public static Class<?> classFromNMS(String className) throws ClassNotFoundException { 
-		return Class.forName(NMS_PATH + "." + className);
+	public static Class<?> getClass(String className) throws ReflectionException {
+		try {
+			return Class.forName(className);
+		} catch (Throwable ex) {
+			throw new ReflectionException(ex);
+		}
 	}
 	
-	public static Class<?> classFromCB(String className) throws ClassNotFoundException {
-		return Class.forName(CB_PATH + "." + className);
+	/**
+	 * Gets a class from the minecraft server.
+	 * 
+	 * @param className Name of the class, this gets added to the end of {@link #NMS_PATH}.
+	 * @return The <code>Class</code> object represented by the given name
+	 * 
+	 * @throws ReflectionException Thrown if there is no class with the given name.
+	 */
+	public static Class<?> getNMSClass(String className) throws ReflectionException {
+		return getClass(NMS_PATH + className);
+	}
+	
+	/**
+	 * Gets a class from craftbukkit.
+	 * 
+	 * @param className Name of the class including packages, this gets added to the end of {@link #CB_PATH}.
+	 * @return The <code>Class</code> object represented by the given name
+	 * 
+	 * @throws ReflectionException Thrown if there is no class with the given name.
+	 */
+	public static Class<?> getCBClass(String className) throws ReflectionException {
+		return getClass(CB_PATH + className);
 	}
 	
 	//-------------------------Reflection Utility-------------------------//
@@ -241,86 +432,68 @@ public final class Reflector {
 		}
 	}
 	
-	//-------------------------Reflector Instance-------------------------//
+	private static String argumentTypesToString(Class<?>[] args) {
+		StringBuilder buf = new StringBuilder();
+		buf.append("(");
+		if (args != null) {
+			for (int i = 0; i < args.length; i++) {
+				if (i > 0) {
+					buf.append(", ");
+				}
+				Class<?> c = args[i];
+				buf.append((c == null) ? "null" : c.getName());
+			}
+		}
+		buf.append(")");
+		return buf.toString();
+	}
 	
-	//-----Fields-----//
-	private final Object obj;
+	//-------------------------Reflector Instance-------------------------//
 	
 	//-----Constructor-----//
 	public Reflector(Object obj) {
-		this.obj = obj;
+		super(obj);
 	}
 	
 	//-----Public Methods-----//
-	public Object fetch() {
-		return this.obj;
-	}
-	
-	public <T> T fetchAs(Class<T> clazz) throws ClassCastException {
-		return clazz.cast(this.obj);
-	}
-	
 	public boolean isInstance(Class<?> clazz) {
-		return clazz.isInstance(this.obj);
+		return clazz.isInstance(super.getHandle());
 	}
 	
-	public Reflector invoke(String methodName, Object... args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		return invokeMethod(this.obj, methodName, args);
+	public boolean isNull() {
+		return super.getHandle() == null;
 	}
 	
-	public Reflector get(String fieldName)
-			throws IllegalArgumentException, IllegalAccessException {
-		return readField(this.obj, fieldName);
+	public Reflector expression(String expression, Object... args) throws ReflectionException {
+		return executeExpression(super.getHandle(), expression, args);
 	}
 	
-	public Reflector set(String fieldName, Object value)
-			throws IllegalArgumentException, IllegalAccessException {
-		writeField(this.obj, fieldName, value);
+	public Reflector invoke(String methodName, Object... args) throws ReflectionException {
+		return invokeMethod(super.getHandle(), methodName, args);
+	}
+	
+	public Reflector read(String fieldName) throws ReflectionException {
+		return readField(super.getHandle(), fieldName);
+	}
+	
+	public Reflector write(String fieldName, Object value) throws ReflectionException {
+		writeField(super.getHandle(), fieldName, value);
 		return this;
-	}
-	
-	public Reflector invokeCommand(String command, Object... args)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		if (this.obj == null) {
-			throw new NullPointerException();
-		}
-		Object obj = this.obj;
-		String[] parts = command.split("\\.");
-		for (String part : parts) {
-			int argumentOpenerIndex = part.indexOf('(');
-			if (argumentOpenerIndex != -1) {
-				String methodName = part.substring(0, argumentOpenerIndex);
-				if (part.charAt(argumentOpenerIndex + 1) == ')') {
-					obj = invokeMethod0(obj.getClass(), obj, methodName, ArrayUtils.EMPTY_OBJECT_ARRAY);
-				} else {
-					String[] argumentIndex = part.substring(argumentOpenerIndex + 1, part.indexOf(')')).split(",");
-					Object[] arguments = new Object[argumentIndex.length];
-					for (int i = 0; i < argumentIndex.length; i++) {
-						arguments[i] = args[Integer.valueOf(argumentIndex[i]) - 1];
-					}
-					obj = invokeMethod0(obj.getClass(), obj, methodName, arguments);
-				}
-			} else {
-				obj = readField0(obj.getClass(), obj, part);
-			}
-		}
-		return new Reflector(obj);
 	}
 	
 	//-----Utility Methods-----//
 	@Override
 	public String toString() {
-		return String.valueOf(this.obj);
+		return String.valueOf(super.getHandle());
 	}
 	
 	@Override
 	public int hashCode() {
-		return ObjectUtils.hashCode(this.obj);
+		return ObjectUtils.hashCode(super.getHandle());
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return ObjectUtils.equals(this.obj, obj);
+		return ObjectUtils.equals(super.getHandle(), obj);
 	}
 }

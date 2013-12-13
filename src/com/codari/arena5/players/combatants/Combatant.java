@@ -2,8 +2,8 @@ package com.codari.arena5.players.combatants;
 
 import org.bukkit.entity.Player;
 
+import com.codari.api5.player.OfflineCodariPlayer;
 import com.codari.api5.stats.StatHolder;
-import com.codari.api5.util.PlayerReference;
 import com.codari.arena5.Arena;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
@@ -24,7 +24,7 @@ public interface Combatant extends StatHolder {
 	 * Refer to {@Link PlayerReference} for more information.
 	 * @return The PlayerReference for this combatant. 
 	 */
-	public PlayerReference getPlayerReference();
+	public OfflineCodariPlayer getPlayerReference();
 	
 	/**
 	 * Reference to the Stats for this player.

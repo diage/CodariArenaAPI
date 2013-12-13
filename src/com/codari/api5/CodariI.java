@@ -2,7 +2,7 @@ package com.codari.api5;
 
 import org.bukkit.plugin.Plugin;
 
-import com.codari.api5.metadata.MetadataManager;
+import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.ArenaManager;
 import com.codari.arena5.Library;
@@ -20,7 +20,8 @@ public interface CodariI extends Plugin {
 	public final static CodariI INSTANCE = null;
 	
 	//-----Methods-----//
-	public MetadataManager getMetadataManager();
+	public CodariPlayerManager getCodariPlayerManager();
+	
 	/**
 	 * Gets the Arena Manager of the plugin.
 	 * 

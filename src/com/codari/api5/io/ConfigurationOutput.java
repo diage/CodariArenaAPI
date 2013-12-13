@@ -1,9 +1,12 @@
 package com.codari.api5.io;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+
+import com.google.common.base.Function;
 
 public class ConfigurationOutput {
 	//-----Fields-----//
@@ -68,4 +71,14 @@ public class ConfigurationOutput {
 		this.result.putAll(values);
 		return this;
 	}
+	
+	public <O> ConfigurationOutput add(ConfigurationOutput.OutputFunction<O> outputFunction, O value) {
+		this.addAll(outputFunction.apply(value));
+		return this;
+	}
+	
+	//-----Output Functions-----//
+	public static interface OutputFunction<O> extends Function<O, Map<String, Object>>{}
+	public static interface ArrayOutputFunction<O> extends OutputFunction<O[]>{}
+	public static interface CollectionOutputFunction<O> extends OutputFunction<Collection<O>>{}
 }
