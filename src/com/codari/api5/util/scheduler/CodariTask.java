@@ -1,4 +1,4 @@
-package com.codari.api5.util;
+package com.codari.api5.util.scheduler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
