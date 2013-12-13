@@ -21,10 +21,10 @@ public class HotbarSelectEvent extends Event {
 	private final ItemStack item;
 	
 	//-----Constructor-----//
-	public HotbarSelectEvent(Combatant combatant, HotbarSlot slot, ItemStack item) {
+	public HotbarSelectEvent(Combatant combatant, HotbarSlot slot) {
 		this.combatant = combatant;
 		this.slot = slot;
-		this.item = item;
+		this.item = this.slot.getItem(this.combatant.getPlayer());
 	}
 	
 	//-----Public Methods-----//
