@@ -75,4 +75,10 @@ public interface Combatant extends StatHolder {
 	public Player getPlayer();
 	
 	public Role swapRole(Role role);
+	
+	
+	public boolean isHotbarActive();
+	public void setHotbarActibe(boolean active);
+	public boolean isHotbarOnCooldown();
+	public void setHotbarCooldown(long ticks);
 }
