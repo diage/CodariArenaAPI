@@ -1,5 +1,6 @@
 package com.codari.arena5.rules.roledelegation;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.codari.arena5.objects.persistant.RoleSelectionObject;
@@ -12,7 +13,7 @@ import com.codari.arena5.objects.persistant.RoleSelectionObject;
  * @author Ryan
  *
  */
-public interface RoleDelegation {
+public interface RoleDelegation extends Serializable {
 	/**
 	 * Method to set the RoleDelegationType of this Arena which this will eventually be added to. 
 	 * 
