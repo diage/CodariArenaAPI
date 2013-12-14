@@ -2,6 +2,8 @@ package com.codari.arena5;
 
 import java.io.Serializable;
 
+import org.bukkit.Location;
+
 import com.codari.api5.util.Time;
 import com.codari.arena5.objects.persistant.DelayedPersistentObject;
 import com.codari.arena5.objects.persistant.ImmediatePersistentObject;
@@ -127,5 +129,7 @@ public interface ArenaBuilder extends Serializable {
 	 */
 	public boolean registerPersistent(DelayedPersistentObject object, Time time, boolean override);
 
-	public GameRule getGameRule(); 
+	public GameRule getGameRule();
+	
+	public void addSpawnLocation(Location location);
 }
