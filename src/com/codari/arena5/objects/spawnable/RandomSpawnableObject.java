@@ -17,4 +17,6 @@ public interface RandomSpawnableObject extends SpawnableObject {
 	 * @return The weight of this RandomSpawnableObject, the higher the weight the less rare it is. 
 	 */
 	public int getWeight();
+	
+	public boolean isSpawned();
 }
