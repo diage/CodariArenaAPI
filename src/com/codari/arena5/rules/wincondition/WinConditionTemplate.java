@@ -6,6 +6,7 @@ import org.bukkit.event.HandlerList;
 import com.codari.api5.CodariI;
 
 public abstract class WinConditionTemplate implements WinCondition {
+	private static final long serialVersionUID = 8677900739585198742L;
 	//-----Fields-----//
 	protected boolean conditionMet;
 	

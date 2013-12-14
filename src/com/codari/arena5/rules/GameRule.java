@@ -1,5 +1,6 @@
 package com.codari.arena5.rules;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import com.codari.api5.util.Time;
@@ -16,7 +17,7 @@ import com.codari.arena5.rules.wincondition.WinConditionTemplate;
  * @author Ryan
  *
  */
-public interface GameRule {
+public interface GameRule extends Serializable {
 	/**
 	 * Method to declare the valid team size which must be met before the game will accept a team. 
 	 * 

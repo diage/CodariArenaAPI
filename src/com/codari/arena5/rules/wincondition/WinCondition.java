@@ -1,5 +1,6 @@
 package com.codari.arena5.rules.wincondition;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import org.bukkit.event.Listener;
@@ -7,7 +8,7 @@ import org.bukkit.event.Listener;
 import com.codari.arena5.Arena;
 import com.codari.arena5.players.combatants.Combatant;
 
-public interface WinCondition extends Listener {
+public interface WinCondition extends Listener, Serializable {
 
 	public boolean conditionMet();
 	
