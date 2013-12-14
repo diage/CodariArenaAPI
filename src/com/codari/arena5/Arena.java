@@ -1,5 +1,6 @@
 package com.codari.arena5;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import com.codari.arena5.players.teams.Team;
@@ -14,7 +15,7 @@ import com.codari.arena5.rules.GameRule;
  * @author Ryan
  *
  */
-public interface Arena {
+public interface Arena extends Serializable {
 	
 	/**
 	 * Get the name of this Arena. Note this may differ from the name requested.

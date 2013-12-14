@@ -1,5 +1,7 @@
 package com.codari.arena5.objects;
 
+import java.io.Serializable;
+
 /**
  * Any object that exists within an {@Link Arena}.
  * 
@@ -15,7 +17,7 @@ package com.codari.arena5.objects;
  * @author Ryan
  *
  */
-public interface ArenaObject {
+public interface ArenaObject extends Serializable {
 	/**
 	 * Method to allow the object to be seen but not interacted with. 
 	 * 	This is useful for when the arena is being made and you are interested in where 

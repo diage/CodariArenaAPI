@@ -1,5 +1,7 @@
 package com.codari.arena5;
 
+import java.io.Serializable;
+
 import com.codari.api5.util.Time;
 import com.codari.arena5.objects.persistant.DelayedPersistentObject;
 import com.codari.arena5.objects.persistant.ImmediatePersistentObject;
@@ -16,7 +18,7 @@ import com.codari.arena5.rules.GameRule; //<<Why is this removed?
  * @author Ryan
  *
  */
-public interface ArenaBuilder {
+public interface ArenaBuilder extends Serializable {
 	//*****Group Registration*****//
 	/**
 	 * <p>Create a group for the time line to randomly select a {@link com.codari.arena5.objects.spawnable.SpawnableObject Spawnable Object}. 
