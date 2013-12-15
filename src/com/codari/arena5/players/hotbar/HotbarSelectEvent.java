@@ -17,14 +17,14 @@ public class HotbarSelectEvent extends Event {
 	
 	//-----Fields-----//
 	private final Combatant combatant;
-	private final HotbarSlot slot;
+	private final HotbarOption option;
 	private ItemStack item;
 	
 	//-----Constructor-----//
-	public HotbarSelectEvent(Combatant combatant, HotbarSlot slot) {
+	public HotbarSelectEvent(Combatant combatant, HotbarOption option) {
 		this.combatant = combatant;
-		this.slot = slot;
-		this.item = this.slot.getItem(this.combatant.getPlayer());
+		this.option = option;
+		this.item = this.option.getItem(this.combatant.getPlayer());
 	}
 	
 	//-----Public Methods-----//
@@ -32,8 +32,8 @@ public class HotbarSelectEvent extends Event {
 		return this.combatant;
 	}
 	
-	public HotbarSlot getSlot() {
-		return this.slot;
+	public HotbarOption getOption() {
+		return this.option;
 	}
 	
 	public ItemStack getItem() {
