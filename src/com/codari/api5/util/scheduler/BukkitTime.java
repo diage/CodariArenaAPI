@@ -22,7 +22,7 @@ public enum BukkitTime {
 		return this.tickUnit;
 	}
 	
-	public long tickValue(double value) {
+	public long tickValueOf(double value) {
 		return Math.round(this.toTicks(value));
 	}
 	
@@ -31,7 +31,7 @@ public enum BukkitTime {
 	}
 	
 	public double convert(double value, BukkitTime unit) {
-		return this.fromTicks(unit.tickValue(value));
+		return this.fromTicks(unit.tickValueOf(value));
 	}
 	
 	public double toTicks(double value) {

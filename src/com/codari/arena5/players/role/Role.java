@@ -19,9 +19,7 @@ public interface Role {
 	 */
 	public Collection<Skill> getSkills();
 	public boolean doubleJump(Combatant combatant);
-	public boolean block(Combatant combatant);
-	public boolean sprint(Combatant combatant);
-	public boolean sneak(Combatant combatant);
+	public boolean skill(Combatant combatant);
 	
 	public String getName();
 	public Role addSkill(Skill skill);

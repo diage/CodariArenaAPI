@@ -82,4 +82,6 @@ public interface Combatant extends StatHolder {
 	public void setHotbarActibe(boolean active);
 	public boolean isHotbarOnCooldown();
 	public void setHotbarCooldown(long ticks);
+
+	public void skill();
 }
