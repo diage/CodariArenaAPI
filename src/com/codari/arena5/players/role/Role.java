@@ -18,10 +18,10 @@ public interface Role {
 	 * @return The {@link Skill} associated for the role in question. 
 	 */
 	public Collection<Skill> getSkills();
-	public void doubleJump(Combatant combatant);
-	public void block(Combatant combatant);
-	public void sprint(Combatant combatant);
-	public void sneak(Combatant combatant);
+	public boolean doubleJump(Combatant combatant);
+	public boolean block(Combatant combatant);
+	public boolean sprint(Combatant combatant);
+	public boolean sneak(Combatant combatant);
 	
 	public String getName();
 	public Role addSkill(Skill skill);
