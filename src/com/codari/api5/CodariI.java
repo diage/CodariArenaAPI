@@ -2,6 +2,7 @@ package com.codari.api5;
 
 import org.bukkit.plugin.Plugin;
 
+import com.codari.api5.enchantment.EnchantmentManager;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.ArenaManager;
@@ -32,4 +33,6 @@ public interface CodariI extends Plugin {
 	public StatFactory getStatFactory();
 	
 	public Library getLibrary();
+	
+	public EnchantmentManager getEnchantmentManager();
 }
