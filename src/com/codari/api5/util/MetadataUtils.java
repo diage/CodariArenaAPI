@@ -9,27 +9,31 @@ import org.bukkit.metadata.MetadataStore;
 import com.codari.api5.util.reflect.Reflector;
 
 public class MetadataUtils {
-	//-----Private Constructor-----//111
+	//-----Private Constructor-----//
 	private MetadataUtils(){}
 	
 	//-----Static Methods-----//
 	@SuppressWarnings("unchecked")//Confirmed in craftbukkit source
 	public static MetadataStore<OfflinePlayer> getEntityMetadataStore() {
-		return new Reflector(Bukkit.getServer()).read("entityMetadata").getHandleAs(MetadataStore.class);
+		return (MetadataStore<OfflinePlayer>)
+				new Reflector(Bukkit.getServer()).read("entityMetadata").getHandle();
 	}
 	
 	@SuppressWarnings("unchecked")//Confirmed in craftbukkit source
 	public static MetadataStore<OfflinePlayer> getPlayerMetadataStore() {
-		return new Reflector(Bukkit.getServer()).read("playerMetadata").getHandleAs(MetadataStore.class);
+		return (MetadataStore<OfflinePlayer>)
+				new Reflector(Bukkit.getServer()).read("playerMetadata").getHandle();
 	}
 	
 	@SuppressWarnings("unchecked")//Confirmed in craftbukkit source
 	public static MetadataStore<OfflinePlayer> getWorldMetadataStore() {
-		return new Reflector(Bukkit.getServer()).read("worldMetadata").getHandleAs(MetadataStore.class);
+		return (MetadataStore<OfflinePlayer>)
+				new Reflector(Bukkit.getServer()).read("worldMetadata").getHandle();
 	}
 	
 	@SuppressWarnings("unchecked")//Confirmed in craftbukkit source
 	public static MetadataStore<Block> getBlockMetadataStore(World world) {
-		return new Reflector(world).read("blockMetadata").getHandleAs(MetadataStore.class);
+		return (MetadataStore<Block>)
+				new Reflector(world).read("blockMetadata").getHandle();
 	}
 }

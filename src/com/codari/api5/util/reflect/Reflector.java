@@ -12,31 +12,28 @@ import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.bukkit.Bukkit;
 
-import com.codari.api5.util.SimpleWrapper;
-
-
 /**
  * Utility and wrapper class that aids the reflection process as well as provides
  * further utility for accessing classes in craftbukkit and the minecraft server.
  * <p>
  * This class provides static methods that abstract the process of reflection by
  * doing most of the work for you as well as handling any exceptions caused by a
- * failed reflection and throwing {@link ReflectionException} instead with the
+ * failed reflection and instead throwing {@link ReflectionException} with the
  * cause being the exception that was thrown during reflection.
  * <p>
  * This class further abstracts reflection by wrapping any objects returned through
  * reflection within an instance of this class. Objects wrapped can be obtained with
- * the methods {@link #getHandle()} and {@link #getHandleAs(Class) getHandleAs()}. It is
- * important to note that instances of <code>Reflector</code> are immutable.
+ * the method {@link #getHandle()}. It is important to note that instances of
+ * {@code Reflector} are immutable.
  * <p>
- * It is important to note that reflection methods in this class ignore visibility
- * modifiers such as <code>private</code> and ignores the <code>final</code> modifier
- * on fields. The reason for this is because this class assumes that its users know
- * what they are reflecting and know if they should do so or not.
+ * It is also important to note that reflection methods in this class ignore visibility
+ * modifiers such as {@code private} and ignores the {@code final} modifier on fields.
+ * The reason for this is because this class assumes that its users know what they
+ * are reflecting and know if they should do so or not.
  * 
  * @author Soren025
  */
-public final class Reflector extends SimpleWrapper<Object> {
+public final class Reflector {
 	//-----Constants-----//
 	private final static Field MODIFIERS = getFieldObject(Field.class, "modifiers");
 	static {
@@ -44,17 +41,18 @@ public final class Reflector extends SimpleWrapper<Object> {
 	}
 	
 	/**
-	 * Minecraft version of the running craftbukkit server used at the end of craftbukkit's
-	 * package names.
+	 * Minecraft version of the running craftbukkit server.
+	 * 
+	 * @see {@link #NMS_PATH}, {@link #CB_PATH}.
 	 */
 	public final static String MINECRAFT_VERSION = Bukkit.getServer() != null ?
 			Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3] : "UNKNOWN";
 	/**
-	 * Base class path for NMS classes <code>net.minecraft.server.{@link #MINECRAFT_VERSION}</code>.
+	 * Base class path for NMS classes - {@code net.minecraft.server.{@link #MINECRAFT_VERSION}.
 	 */
 	public final static String NMS_PATH = "net.minecraft.server." + MINECRAFT_VERSION + ".";
 	/**
-	 * Base class path for CB classes </code>org.bukkit.craftbukkit.{@link #MINECRAFT_VERSION}</code>.
+	 * Base class path for CB classes - {@code org.bukkit.craftbukkit.{@link #MINECRAFT_VERSION}.
 	 */
 	public final static String CB_PATH = "org.bukkit.craftbukkit." + MINECRAFT_VERSION + ".";
 	
@@ -86,13 +84,13 @@ public final class Reflector extends SimpleWrapper<Object> {
 	//-------------------------Method Reflection-------------------------//
 	
 	/**
-	 * Gets the <code>Method</code> object for a given <code>Class</code> that matches the provided
+	 * Gets the {@code Method} object for a given {@code Class} that matches the provided
 	 * name and parameter types, including methods declared in super classes as well.
 	 * 
-	 * @param clazz The <code>Class</code> object to search for the method in.
+	 * @param clazz The {@code Class} object to search for the method in.
 	 * @param methodName The name of the method.
 	 * @param parameterTypes The parameter array.
-	 * @return The <code>Method</code> object that matches the provided name and parameter types.
+	 * @return The {@code Method} object that matches the provided name and parameter types.
 	 * 
 	 * @throws ReflectionException Thrown if the method could not be found.
 	 */
@@ -125,14 +123,14 @@ public final class Reflector extends SimpleWrapper<Object> {
 	}
 	
 	/**
-	 * Invokes a given <code>Method</code> object.
+	 * Invokes a given {@code Method} object.
 	 * 
-	 * @param method The <code>Method</code> object to invoke.
-	 * @param obj The <code>Object</code> to invoke the method on.
+	 * @param method The {@code Method} object to invoke.
+	 * @param obj The {@code Object} to invoke the method on.
 	 * @param args The arguments to pass into the method.
-	 * @return An instance of this class wrapping the <code>Object</code> returned by the
-	 * 		method. The <code>Object</code> wrapped is <code>null</code> if the return type
-	 * 		of the method is <code>void</code>.
+	 * @return An instance of this class wrapping the {@code Object} returned by the
+	 * 		method. The {@code Object} wrapped is {@code null} if the return type
+	 * 		of the method is {@code void}.
 	 * 
 	 * @throws ReflectionException Thrown if the method failed to invoke for any reason.
 	 */
@@ -154,15 +152,15 @@ public final class Reflector extends SimpleWrapper<Object> {
 	}
 	
 	/**
-	 * Searches for and invokes the method for a given <code>Object</code> that matches
+	 * Searches for and invokes the method for a given {@code Object} that matches
 	 * the provided name along with being able to accept the provided arguments.
 	 * 
-	 * @param obj The <code>Object</code> to invoke the method on.
+	 * @param obj The {@code Object} to invoke the method on.
 	 * @param methodName The name of the method.
 	 * @param args The arguments to pass into the method.
-	 * @return An instance of this class wrapping the <code>Object</code> returned by the
-	 * 		method. The <code>Object</code> wrapped is <code>null</code> if the return type
-	 * 		of the method is <code>void</code>.
+	 * @return An instance of this class wrapping the {@code Object} returned by the
+	 * 		method. The {@code Object} wrapped is {@code null} if the return type
+	 * 		of the method is {@code void}.
 	 * 
 	 * @throws ReflectionException Thrown if the method failed to invoke for any reason.
 	 */
@@ -172,15 +170,15 @@ public final class Reflector extends SimpleWrapper<Object> {
 	}
 	
 	/**
-	 * Searches for and invokes the static method for a given <code>Class</code> that matches
+	 * Searches for and invokes the static method for a given {@code Class} that matches
 	 * the provided name along with being able to accept the provided arguments.
 	 * 
-	 * @param clazz The <code>Class</code> object to invoke the static method on.
+	 * @param clazz The {@code Class} object to invoke the static method on.
 	 * @param methodName The name of the static method.
 	 * @param args The arguments to pass into the static method.
-	 * @return An instance of this class wrapping the <code>Object</code> returned by the
-	 * 		method. The <code>Object</code> wrapped is <code>null</code> if the return type
-	 * 		of the method is <code>void</code>.
+	 * @return An instance of this class wrapping the {@code Object} returned by the
+	 * 		method. The {@code Object} wrapped is {@code null} if the return type
+	 * 		of the method is {@code void}.
 	 * 
 	 * @throws ReflectionException Thrown if the static method failed to invoke for any reason.
 	 */
@@ -197,12 +195,12 @@ public final class Reflector extends SimpleWrapper<Object> {
 	//-------------------------Field Reflection-------------------------//
 	
 	/**
-	 * Gets the <code>Field</code> object for a given <code>Class</code> that matches
+	 * Gets the {@code Field} object for a given {@code Class} that matches
 	 * the provided name.
 	 * 
-	 * @param clazz The <code>Class</code> object to search for the field in.
+	 * @param clazz The {@code Class} object to search for the field in.
 	 * @param fieldName The name of the field.
-	 * @return The <code>Field</code> object that matches the provided name.
+	 * @return The {@code Field} object that matches the provided name.
 	 * 
 	 * @throws ReflectionException Thrown if the field could not be found.
 	 */
@@ -283,12 +281,12 @@ public final class Reflector extends SimpleWrapper<Object> {
 	//-------------------------Constructor Reflection-------------------------//
 	
 	/**
-	 * Gets the <code>Constructor</code> object for a given <code>Class</code> that
+	 * Gets the {@code Constructor} object for a given {@code Class} that
 	 * matches the provided parameter types.
 	 * 
-	 * @param clazz The <code>Class</code> object to search for the method in.
+	 * @param clazz The {@code Class} object to search for the method in.
 	 * @param parameterTypes The parameter array.
-	 * @return The <code>Method</code> object that matches the provided parameter types.
+	 * @return The {@code Method} object that matches the provided parameter types.
 	 * 
 	 * @throws ReflectionException Thrown if the constructor could not be found.
 	 */
@@ -313,11 +311,11 @@ public final class Reflector extends SimpleWrapper<Object> {
 	}
 	
 	/**
-	 * Invokes a given <code>Constructor</code> object.
+	 * Invokes a given {@code Constructor} object.
 	 * 
-	 * @param constructor The <code>Constructor</code> object to invoke.
+	 * @param constructor The {@code Constructor} object to invoke.
 	 * @param args The arguments to pass into the constructor.
-	 * @return An instance of this class wrapping the constructed <code>Object</code>.
+	 * @return An instance of this class wrapping the constructed {@code Object}.
 	 * 
 	 * @throws ReflectionException Thrown if the constructor failed to invoke for any reason.
 	 */
@@ -339,12 +337,12 @@ public final class Reflector extends SimpleWrapper<Object> {
 	}
 	
 	/**
-	 * Searches for and invokes the constructor for a given <code>Class</code> that
+	 * Searches for and invokes the constructor for a given {@code Class} that
 	 * is able to accept the provided arguments.
 	 * 
-	 * @param clazz The <code>Class</code> object to construct.
+	 * @param clazz The {@code Class} object to construct.
 	 * @param args The arguments to pass into the constructor.
-	 * @return An instance of this class wrapping the constructed <code>Object</code>.
+	 * @return An instance of this class wrapping the constructed {@code Object}.
 	 * 	
 	 * @throws ReflectionException Thrown if the constructor failed to invoke for any reason.
 	 */
@@ -372,7 +370,7 @@ public final class Reflector extends SimpleWrapper<Object> {
 	 * Gets a class from the minecraft server.
 	 * 
 	 * @param className Name of the class, this gets added to the end of {@link #NMS_PATH}.
-	 * @return The <code>Class</code> object represented by the given name
+	 * @return The {@code Class} object represented by the given name
 	 * 
 	 * @throws ReflectionException Thrown if there is no class with the given name.
 	 */
@@ -384,7 +382,7 @@ public final class Reflector extends SimpleWrapper<Object> {
 	 * Gets a class from craftbukkit.
 	 * 
 	 * @param className Name of the class including packages, this gets added to the end of {@link #CB_PATH}.
-	 * @return The <code>Class</code> object represented by the given name
+	 * @return The {@code Class} object represented by the given name
 	 * 
 	 * @throws ReflectionException Thrown if there is no class with the given name.
 	 */
@@ -450,50 +448,57 @@ public final class Reflector extends SimpleWrapper<Object> {
 	
 	//-------------------------Reflector Instance-------------------------//
 	
+	//-----Fields-----//
+	private final Object obj;
+	
 	//-----Constructor-----//
 	public Reflector(Object obj) {
-		super(obj);
+		this.obj = obj;
 	}
 	
 	//-----Public Methods-----//
+	public Object getHandle() {
+		return this.obj;
+	}
+	
 	public boolean isInstance(Class<?> clazz) {
-		return clazz.isInstance(super.getHandle());
+		return clazz.isInstance(this.getHandle());
 	}
 	
 	public boolean isNull() {
-		return super.getHandle() == null;
+		return this.getHandle() == null;
 	}
 	
 	public Reflector expression(String expression, Object... args) throws ReflectionException {
-		return executeExpression(super.getHandle(), expression, args);
+		return executeExpression(this.getHandle(), expression, args);
 	}
 	
 	public Reflector invoke(String methodName, Object... args) throws ReflectionException {
-		return invokeMethod(super.getHandle(), methodName, args);
+		return invokeMethod(this.getHandle(), methodName, args);
 	}
 	
 	public Reflector read(String fieldName) throws ReflectionException {
-		return readField(super.getHandle(), fieldName);
+		return readField(this.getHandle(), fieldName);
 	}
 	
 	public Reflector write(String fieldName, Object value) throws ReflectionException {
-		writeField(super.getHandle(), fieldName, value);
+		writeField(this.getHandle(), fieldName, value);
 		return this;
 	}
 	
 	//-----Utility Methods-----//
 	@Override
 	public String toString() {
-		return String.valueOf(super.getHandle());
+		return String.valueOf(this.getHandle());
 	}
 	
 	@Override
 	public int hashCode() {
-		return ObjectUtils.hashCode(super.getHandle());
+		return ObjectUtils.hashCode(this.getHandle());
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return ObjectUtils.equals(super.getHandle(), obj);
+		return ObjectUtils.equals(this.getHandle(), obj);
 	}
 }
