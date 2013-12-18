@@ -8,6 +8,9 @@ public abstract class CustomEnchantment extends Enchantment {
 		super(id);
 	}
 	
+	//-----Abstract Methods-----//
+	public abstract boolean isVisible();
+	
 	//-----Utility Methods-----//
 	public final String toString() {
 		return super.toString();
