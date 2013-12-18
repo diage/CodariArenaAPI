@@ -1,6 +1,7 @@
 package com.codari.api5;
 
 import com.codari.api5.enchantment.EnchantmentManager;
+import com.codari.api5.itemdata.ItemDataManager;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.ArenaManager;
@@ -25,5 +26,9 @@ public class Codari {
 	
 	public static EnchantmentManager getEnchantmentManager() {
 		return CodariI.INSTANCE.getEnchantmentManager();
+	}
+	
+	public static ItemDataManager getItemDataManager() {
+		return CodariI.INSTANCE.getItemDataManager();
 	}
 }
