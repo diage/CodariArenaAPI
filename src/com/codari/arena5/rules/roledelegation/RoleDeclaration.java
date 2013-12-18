@@ -1,6 +1,8 @@
 package com.codari.arena5.rules.roledelegation;
 
-public interface RoleDeclaration {
+import java.io.Serializable;
+
+public interface RoleDeclaration extends Serializable {
 	/**
 	 * 
 	 * @return The name of the group all the roles were assigned under. 
