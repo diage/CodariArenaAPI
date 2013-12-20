@@ -8,6 +8,7 @@ import com.codari.arena5.rules.roledelegation.RoleDeclaration;
 import com.codari.arena5.rules.roledelegation.RoleDelegation;
 import com.codari.arena5.rules.timedaction.TimedAction;
 import com.codari.arena5.rules.wincondition.WinConditionTemplate;
+import java.util.List;
 
 /**
  * Game rules will be static objects inserted into the time line upon registration. They will define passive actions, 
@@ -114,7 +115,7 @@ public interface GameRule extends Serializable {
 	 * 
 	 * @return The RoleDeclaration. 
 	 */
-	public RoleDeclaration getRoleDeclaration();
+	public List<RoleDeclaration> getRoleDeclaration();
 	/**
 	 * Method to add a {@link RoleDelegation} to the Game Rule. One must be added for the arena to be valid. 
 	 * 
