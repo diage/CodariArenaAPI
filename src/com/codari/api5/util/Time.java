@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Time implements Serializable {
 	private static final long serialVersionUID = 5769855300220316543L;
 	//-----Constants-----//
-	public final static Time NULL = new Time(0, 0, -1);
+	public final static Time NULL = new Time(0, 0, 0);
 	public final static Time MAX = new Time(0, 0, Long.MAX_VALUE);
 	public final static Time ONE_TICK = new Time(0, 0, 1);
 	
