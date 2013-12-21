@@ -1,7 +1,9 @@
-package com.codari.arena5.arena;
+package com.codari.arena5.arena.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+
+import com.codari.arena5.arena.Arena;
 
 public class ArenaEndEvent extends Event{
 	//-----Static Fields-----//

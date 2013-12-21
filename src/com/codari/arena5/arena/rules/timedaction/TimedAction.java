@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.timedaction;
+package com.codari.arena5.arena.rules.timedaction;
 
 import java.io.Serializable;
 

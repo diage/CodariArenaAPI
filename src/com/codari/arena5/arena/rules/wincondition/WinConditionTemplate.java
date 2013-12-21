@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.wincondition;
+package com.codari.arena5.arena.rules.wincondition;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;

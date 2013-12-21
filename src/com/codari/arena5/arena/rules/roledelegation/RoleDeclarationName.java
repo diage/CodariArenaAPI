@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.roledelegation;
+package com.codari.arena5.arena.rules.roledelegation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

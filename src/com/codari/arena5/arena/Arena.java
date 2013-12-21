@@ -3,8 +3,8 @@ package com.codari.arena5.arena;
 import java.io.Serializable;
 import java.util.Map;
 
+import com.codari.arena5.arena.rules.GameRule;
 import com.codari.arena5.players.teams.Team;
-import com.codari.arena5.rules.GameRule;
 
 /**
  * Current representation of the primary Arena. 

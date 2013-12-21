@@ -1,4 +1,4 @@
-package com.codari.arena5.rules.wincondition;
+package com.codari.arena5.arena.rules.wincondition;
 
 import java.io.Serializable;
 import java.util.Collection;

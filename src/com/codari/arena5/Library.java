@@ -1,9 +1,9 @@
 package com.codari.arena5;
 
+import com.codari.arena5.arena.rules.roledelegation.RoleDeclaration;
+import com.codari.arena5.arena.rules.timedaction.TimedAction;
+import com.codari.arena5.arena.rules.wincondition.WinCondition;
 import com.codari.arena5.objects.ArenaObject;
-import com.codari.arena5.rules.roledelegation.RoleDeclaration;
-import com.codari.arena5.rules.timedaction.TimedAction;
-import com.codari.arena5.rules.wincondition.WinCondition;
 
 public interface Library {
 	public void registerWinCondition(Class<? extends WinCondition> clazz);

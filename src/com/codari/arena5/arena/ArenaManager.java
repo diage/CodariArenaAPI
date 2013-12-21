@@ -2,11 +2,11 @@ package com.codari.arena5.arena;
 
 import org.bukkit.OfflinePlayer;
 
+import com.codari.arena5.arena.rules.GameRule;
 import com.codari.arena5.players.combatants.Combatant;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
 import com.codari.arena5.players.teams.TeamColor;
-import com.codari.arena5.rules.GameRule;
 
 /**
  * The overall manager for any {@link Arena}. This will be used to keep track of currently existing Arenas 
