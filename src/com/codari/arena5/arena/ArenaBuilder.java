@@ -132,4 +132,6 @@ public interface ArenaBuilder extends Serializable {
 	public GameRule getGameRule();
 	
 	public void addSpawnLocation(Location location);
+
+	public boolean checkForRandomSpawnableGroup(String name);
 }
