@@ -6,8 +6,8 @@ import com.codari.api5.enchantment.EnchantmentManager;
 import com.codari.api5.itemdata.ItemDataManager;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
-import com.codari.arena5.ArenaManager;
 import com.codari.arena5.Library;
+import com.codari.arena5.arena.ArenaManager;
 
 /**
  * Codari instance of {@link org.bukkit.plugin.Plugin}.

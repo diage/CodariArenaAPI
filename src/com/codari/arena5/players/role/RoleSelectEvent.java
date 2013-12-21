@@ -1,10 +1,9 @@
-package com.codari.arena5.events;
+package com.codari.arena5.players.role;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import com.codari.arena5.players.combatants.Combatant;
-import com.codari.arena5.players.role.Role;
 
 public class RoleSelectEvent extends Event {
 	//-----Static Fields-----//

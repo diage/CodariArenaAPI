@@ -1,4 +1,4 @@
-package com.codari.arena5;
+package com.codari.arena5.arena;
 
 import org.bukkit.OfflinePlayer;
 

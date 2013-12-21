@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.bukkit.entity.Player;
 
-import com.codari.arena5.Arena;
+import com.codari.arena5.arena.Arena;
 import com.codari.arena5.players.combatants.Combatant;
 /**
  * Represents the team in which a {@link Combatants} is on when inside of an {@Link Arena}. 

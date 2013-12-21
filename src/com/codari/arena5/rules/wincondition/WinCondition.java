@@ -5,7 +5,7 @@ import java.util.Collection;
 
 import org.bukkit.event.Listener;
 
-import com.codari.arena5.Arena;
+import com.codari.arena5.arena.Arena;
 import com.codari.arena5.players.combatants.Combatant;
 
 public interface WinCondition extends Listener, Serializable {

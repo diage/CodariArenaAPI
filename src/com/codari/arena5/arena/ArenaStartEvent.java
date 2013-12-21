@@ -1,42 +1,45 @@
-package com.codari.arena5;
+package com.codari.arena5.arena;
 
-import java.util.Collection;
-
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import com.codari.arena5.players.combatants.Combatant;
 
-public class ArenaWinEvent extends Event {
+public class ArenaStartEvent extends Event implements Cancellable {
 	//-----Static Fields-----//
 	private static final HandlerList handlers = new HandlerList();
-
+	
 	//-----Static Methods-----//
 	public static HandlerList getHandlerList() {
 		return handlers;
 	}
-
+	
 	//-----Fields-----//
 	private final Arena arena;
-	Collection<Combatant> winners;
-
+	private boolean cancelled;
+	
 	//-----Constructor-----//
-	public ArenaWinEvent(Arena arena, Collection<Combatant> winners) {
+	public ArenaStartEvent(Arena arena) {
 		this.arena = arena;
-		this.winners = winners;
 	}
-
+	
 	//-----Public Methods-----//
 	public Arena getArena() {
 		return this.arena;
-	}
-	
-	public Collection<Combatant> getWinners() {
-		return this.winners;
 	}
 
 	@Override
 	public HandlerList getHandlers() {
 		return handlers;
 	}
+
+	@Override
+	public boolean isCancelled() {
+		return this.cancelled;
+	}
+
+	@Override
+	public void setCancelled(boolean cancelled) {
+		this.cancelled = cancelled;
+	}	
 }

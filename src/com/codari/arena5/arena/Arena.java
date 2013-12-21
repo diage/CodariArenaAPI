@@ -1,4 +1,4 @@
-package com.codari.arena5;
+package com.codari.arena5.arena;
 
 import java.io.Serializable;
 import java.util.Map;

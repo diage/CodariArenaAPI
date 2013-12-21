@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 import com.codari.api5.player.OfflineCodariPlayer;
 import com.codari.api5.stats.StatHolder;
-import com.codari.arena5.Arena;
+import com.codari.arena5.arena.Arena;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
 /**
