@@ -75,7 +75,7 @@ public final class Tick extends Number implements Comparable<Tick> {
 	
 	@Override
 	public String toString() {
-		//TODO leave be or include a prefix?
+		//FIXME - leave be or include a prefix?
 		return Long.toString(this.ticks);
 	}
 
