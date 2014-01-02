@@ -2,6 +2,8 @@ package com.codari.arena5.objects;
 
 import java.io.Serializable;
 
+import org.bukkit.Location;
+
 /**
  * Any object that exists within an {@Link Arena}.
  * 
