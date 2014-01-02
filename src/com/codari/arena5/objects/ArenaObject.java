@@ -43,4 +43,7 @@ public interface ArenaObject extends Serializable {
 	 * 	as well as being physically not present (invisible). 
 	 */
 	public void hide();
+	
+	public String getName();
+	public Location getLocation();
 }

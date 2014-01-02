@@ -36,14 +36,18 @@ public class SerializableLocation implements Serializable, ConfigurationSerializ
 	//-----Public Methods-----//
 	public Location getLocation(World world) {
 		if (world == null) {
-			throw new IllegalArgumentException("World named " + this.worldName + " is not loaded");
+			throw new IllegalArgumentException("World can not be null");
 		}
 		return new Location(world, this.x, this.y, this.z, this.yaw, this.pitch);
 	}
 	
 	public Location getLocation() {
 		if (this.location == null) {
-			this.location = this.getLocation(Bukkit.getWorld(this.worldName));
+			World world = Bukkit.getWorld(this.worldName);
+			if (world == null) {
+				throw new IllegalArgumentException("World named " + this.worldName + " is not loaded");
+			}
+			this.location = this.getLocation(world);
 		}
 		return this.location;
 	}

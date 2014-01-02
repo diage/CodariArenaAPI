@@ -11,6 +11,8 @@ import com.codari.arena5.arena.rules.wincondition.WinCondition;
 
 import java.util.List;
 
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+
 /**
  * Game rules will be static objects inserted into the time line upon registration. They will define passive actions, 
  * 	win conditions, and the total Match Duration. 
@@ -19,7 +21,7 @@ import java.util.List;
  * @author Ryan
  *
  */
-public interface GameRule extends Serializable {
+public interface GameRule extends Serializable, ConfigurationSerializable {
 	
 	/**
 	 * Method to declare the valid team size which must be met before the game will accept a team. 
