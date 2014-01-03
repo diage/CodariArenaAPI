@@ -23,6 +23,8 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
  */
 public interface GameRule extends Serializable, ConfigurationSerializable {
 	
+	public String getName();
+	
 	/**
 	 * Method to declare the valid team size which must be met before the game will accept a team. 
 	 * 
