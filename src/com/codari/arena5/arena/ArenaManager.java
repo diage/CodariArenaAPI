@@ -95,4 +95,8 @@ public interface ArenaManager {
 	public void clearRole(String arenaName, String roleName);
 
 	public boolean addToQueue(String arenaName, Team team);
+	
+	public void saveArenaBuilder(String name, File file);
+	
+	public void loadArenaBuilder(String name, File file);
 }
