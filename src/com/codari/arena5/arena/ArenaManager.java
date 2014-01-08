@@ -1,5 +1,7 @@
 package com.codari.arena5.arena;
 
+import java.io.File;
+
 import org.bukkit.OfflinePlayer;
 
 import com.codari.arena5.arena.rules.GameRule;
