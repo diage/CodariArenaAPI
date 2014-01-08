@@ -1,7 +1,5 @@
 package com.codari.arena5.arena;
 
-import java.io.Serializable;
-
 import org.bukkit.Location;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
@@ -21,7 +19,7 @@ import com.codari.arena5.objects.spawnable.RandomSpawnableObject;
  * @author Ryan
  *
  */
-public interface ArenaBuilder extends Serializable, ConfigurationSerializable {
+public interface ArenaBuilder extends ConfigurationSerializable {
 	//*****Group Registration*****//
 	/**
 	 * <p>Create a group for the time line to randomly select a {@link com.codari.arena5.objects.spawnable.SpawnableObject Spawnable Object}. 
