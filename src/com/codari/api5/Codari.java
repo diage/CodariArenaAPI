@@ -6,6 +6,7 @@ import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
+import com.codari.arena5.players.teams.TeamManager;
 
 public class Codari {
 	public static CodariPlayerManager getCodariPlayerManager() {
@@ -14,6 +15,10 @@ public class Codari {
 	
 	public static ArenaManager getArenaManager() {
 		return CodariI.INSTANCE.getArenaManager();
+	}
+	
+	public static TeamManager getTeamManager() {
+		return CodariI.INSTANCE.getTeamManager();
 	}
 	
 	public static StatFactory getStatFactory() {

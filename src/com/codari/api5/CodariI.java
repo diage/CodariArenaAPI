@@ -8,6 +8,7 @@ import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
+import com.codari.arena5.players.teams.TeamManager;
 
 /**
  * Codari instance of {@link org.bukkit.plugin.Plugin}.
@@ -30,6 +31,8 @@ public interface CodariI extends Plugin {
 	 * @return The Arena Manager.
 	 */
 	public ArenaManager getArenaManager();
+	
+	public TeamManager getTeamManager();
 	
 	public StatFactory getStatFactory();
 	
