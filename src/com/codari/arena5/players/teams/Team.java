@@ -52,6 +52,8 @@ public interface Team {
 	
 	public void setLeader(Combatant combatant);
 	
+	public void removeLeader(Combatant combatant);
+	
 	public boolean isLeader(Combatant combatant);
 
 	public void addToTeam(Combatant combatant);

@@ -96,7 +96,10 @@ public interface ArenaManager {
 
 	public boolean addToQueue(String arenaName, Team team);
 	
+	public boolean removeFromQueue(String arenaName, Team team);
+	
 	public boolean saveArenaBuilder(String name, File file);
 	
 	public boolean loadArenaBuilder(String name, File file);
+
 }
