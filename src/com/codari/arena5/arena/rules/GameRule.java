@@ -2,16 +2,13 @@ package com.codari.arena5.arena.rules;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 import com.codari.api5.util.Time;
 import com.codari.arena5.arena.rules.roledelegation.RoleDeclaration;
 import com.codari.arena5.arena.rules.roledelegation.RoleDelegation;
 import com.codari.arena5.arena.rules.timedaction.TimedAction;
 import com.codari.arena5.arena.rules.wincondition.WinCondition;
-
-import java.util.List;
-
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 /**
  * Game rules will be static objects inserted into the time line upon registration. They will define passive actions, 
@@ -21,7 +18,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
  * @author Ryan
  *
  */
-public interface GameRule extends Serializable, ConfigurationSerializable {
+public interface GameRule extends Serializable {
 	
 	public String getName();
 	
