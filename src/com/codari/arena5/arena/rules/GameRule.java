@@ -73,7 +73,14 @@ public interface GameRule extends Serializable {
 	 * @return True if the action was able to have it and it's first execution before the designated end time. False otherwise.
 	 * 
 	 */
-	public boolean addAction(TimedAction action);
+	public boolean addTimedAction(TimedAction action);
+	
+	/**
+	 * Removes the provided timed action from the current selection of timed actions.
+	 * 
+	 * @param timedAction The timed action to remove. 
+	 */
+	public void removeTimedAction(TimedAction action);
 	
 	/**
 	 * Check to see if a duration and at least one win condition have been set.
