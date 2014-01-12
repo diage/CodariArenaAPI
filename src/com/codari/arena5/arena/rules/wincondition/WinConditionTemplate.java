@@ -10,6 +10,8 @@ public abstract class WinConditionTemplate implements WinCondition {
 	//-----Fields-----//
 	protected boolean conditionMet;
 	
+	public WinConditionTemplate() {};
+	
 	//-----Public Methods-----//
 	@Override
 	public final boolean conditionMet() {
