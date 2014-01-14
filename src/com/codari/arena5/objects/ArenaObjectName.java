@@ -9,4 +9,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface ArenaObjectName {
 	String value();
+	Class<?>[] constructorArguments() default {};
 }
