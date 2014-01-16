@@ -8,6 +8,7 @@ import com.codari.api5.player.CodariPlayerManager;
 import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
+import com.codari.arena5.players.guilds.GuildManager;
 import com.codari.arena5.players.teams.TeamManager;
 
 /**
@@ -34,6 +35,8 @@ public interface CodariI extends Plugin {
 	
 	public TeamManager getTeamManager();
 	
+	public GuildManager getGuildManager();
+	
 	public StatFactory getStatFactory();
 	
 	public Library getLibrary();
@@ -41,4 +44,5 @@ public interface CodariI extends Plugin {
 	public EnchantmentManager getEnchantmentManager();
 	
 	public ItemDataManager getItemDataManager();
+
 }
