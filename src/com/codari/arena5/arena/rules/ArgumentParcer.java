@@ -7,13 +7,13 @@ public abstract class ArgumentParcer<T> {
 	//-----Fields-----//
 	private final Class<T> clazz;
 	private final String name;
-	private final List<String> description;
+	private final List<String> documentation;
 	
 	//-----Constructor-----//
-	public ArgumentParcer(Class<T> clazz, String name, String... description) {
+	public ArgumentParcer(Class<T> clazz, String name, String... documentation) {
 		this.clazz = clazz;
 		this.name = name;
-		this.description = Arrays.asList(description);
+		this.documentation = Arrays.asList(documentation);
 	}
 	
 	//-----Methods-----//
@@ -25,8 +25,8 @@ public abstract class ArgumentParcer<T> {
 		return this.name;
 	}
 	
-	public final List<String> getDescription() {
-		return this.description;
+	public final List<String> getDocumentation() {
+		return this.documentation;
 	}
 	
 	public abstract T parce(String token);
