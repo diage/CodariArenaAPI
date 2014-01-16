@@ -1,9 +1,9 @@
 package com.codari.api5;
 
+import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.enchantment.EnchantmentManager;
 import com.codari.api5.itemdata.ItemDataManager;
 import com.codari.api5.player.CodariPlayerManager;
-import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
 import com.codari.arena5.players.teams.TeamManager;
@@ -21,8 +21,8 @@ public class Codari {
 		return CodariI.INSTANCE.getTeamManager();
 	}
 	
-	public static StatFactory getStatFactory() {
-		return CodariI.INSTANCE.getStatFactory();
+	public static AttributeFactory getStatFactory() {
+		return CodariI.INSTANCE.getAttributeFactory();
 	}
 	
 	public static Library getLibrary() {
