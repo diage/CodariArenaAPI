@@ -3,7 +3,6 @@ package com.codari.arena5.players.combatants;
 import org.bukkit.entity.Player;
 
 import com.codari.api5.player.CodariPlayer;
-import com.codari.api5.stats.StatHolder;
 import com.codari.arena5.arena.Arena;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
@@ -17,7 +16,7 @@ import com.codari.arena5.players.teams.TeamColor;
  * @author Ryan
  *
  */
-public interface Combatant extends StatHolder {
+public interface Combatant {
 	
 	/**
 	 * This will get the {@Link PlayerReference} Associated with this Combatant.

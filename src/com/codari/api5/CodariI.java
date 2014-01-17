@@ -2,10 +2,10 @@ package com.codari.api5;
 
 import org.bukkit.plugin.Plugin;
 
+import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.enchantment.EnchantmentManager;
 import com.codari.api5.itemdata.ItemDataManager;
 import com.codari.api5.player.CodariPlayerManager;
-import com.codari.api5.stats.StatFactory;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
 import com.codari.arena5.players.guilds.GuildManager;
@@ -37,7 +37,7 @@ public interface CodariI extends Plugin {
 	
 	public GuildManager getGuildManager();
 	
-	public StatFactory getStatFactory();
+	public AttributeFactory getAttributeFactory();
 	
 	public Library getLibrary();
 	
