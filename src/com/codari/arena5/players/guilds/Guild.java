@@ -8,7 +8,7 @@ public interface Guild {
 
 	public String getGuildName();
 	public Combatant getGuildLeader();
-	public void addGuildMemberOrSetMemberRanking(Combatant combatant, GuildRanking guildRanking);
+	public void setCombatantGuildStanding(Combatant combatant, GuildRanking guildRanking);
 	public GuildRanking getRankingOfMember(Combatant combatant);
 	public void removeGuildMember(Combatant combatant);
 	public List<Combatant> getGuildMembers();

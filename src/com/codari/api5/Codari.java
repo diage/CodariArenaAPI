@@ -41,4 +41,8 @@ public class Codari {
 	public static ItemDataManager getItemDataManager() {
 		return CodariI.INSTANCE.getItemDataManager();
 	}
+	
+	public static AttributeFactory getAttributeFactory() {
+		return CodariI.INSTANCE.getAttributeFactory();
+	}
 }
