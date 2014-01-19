@@ -98,8 +98,8 @@ public interface ArenaManager {
 	
 	public boolean removeFromQueue(Team team);
 	
-	public boolean saveArenaBuilder(String name, File file);
+	public boolean saveArenaBuilder(String name);
 	
-	public boolean loadArenaBuilder(String name, File file);
+	public boolean loadArenaBuilder(File file);
 
 }
