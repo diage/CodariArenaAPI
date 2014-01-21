@@ -36,7 +36,7 @@ public interface CodariI extends Plugin {
 	public TeamManager getTeamManager();
 	
 	public GuildManager getGuildManager();
-	
+		
 	public AttributeFactory getAttributeFactory();
 	
 	public Library getLibrary();
