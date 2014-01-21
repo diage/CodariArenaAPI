@@ -12,6 +12,8 @@ public interface Skill {
 	/**
 	 * Method to be called which contains the logic pertaining to what this skill will do. 
 	 */
+	
 	public void activateSkill(Combatant combatant);
 	public SkillActivation getSkillActivation();
+	
 }

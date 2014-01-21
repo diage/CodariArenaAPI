@@ -24,4 +24,5 @@ public interface Role {
 	public String getName();
 	public Role addSkill(Skill skill);
 	public Role swapRole(Role role);
+	public String getLink(String arenaObjectName);
 }

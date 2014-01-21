@@ -1,6 +1,5 @@
 package com.codari.arena5.players.guilds;
 
-
 public interface GuildManager {
 
 	public boolean putGuild(String guildName, Guild guild);
