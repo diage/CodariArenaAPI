@@ -1,6 +1,5 @@
 package com.codari.arena5.arena.rules;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -18,7 +17,7 @@ import com.codari.arena5.arena.rules.wincondition.WinCondition;
  * @author Ryan
  *
  */
-public interface GameRule extends Serializable {
+public interface GameRule {
 	
 	public String getName();
 	
