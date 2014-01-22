@@ -1,5 +1,8 @@
 package com.codari.api5;
 
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+
 import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.enchantment.EnchantmentManager;
 import com.codari.api5.itemdata.ItemDataManager;
@@ -44,5 +47,13 @@ public class Codari {
 	
 	public static AttributeFactory getAttributeFactory() {
 		return CodariI.INSTANCE.getAttributeFactory();
+	}
+	
+	public static Player getPlayer(String name) {
+		return CodariI.INSTANCE.getCodariPlayerManager().getCodariPlayer(name).getPlayer();
+	}
+	
+	public static Player getPlayer(OfflinePlayer player) {
+		return getPlayer(player.getName());
 	}
 }

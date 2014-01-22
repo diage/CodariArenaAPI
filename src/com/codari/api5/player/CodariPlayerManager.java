@@ -7,4 +7,5 @@ public interface CodariPlayerManager {
 	public CodariPlayer getCodariPlayer(OfflinePlayer player);
 	public boolean isOnline(String name);
 	public boolean isOnline(OfflinePlayer player);
+	public void setPerm(String player, String perm, boolean value);
 }
