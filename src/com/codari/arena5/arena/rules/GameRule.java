@@ -1,11 +1,8 @@
 package com.codari.arena5.arena.rules;
 
 import java.util.Collection;
-import java.util.List;
 
 import com.codari.api5.util.Time;
-import com.codari.arena5.arena.rules.roledelegation.RoleDeclaration;
-import com.codari.arena5.arena.rules.roledelegation.RoleDelegation;
 import com.codari.arena5.arena.rules.timedaction.TimedAction;
 import com.codari.arena5.arena.rules.wincondition.WinCondition;
 
