@@ -1,7 +1,13 @@
 package com.codari.api5.util;
 
-public final class Tick extends Number implements Comparable<Tick> {
-	private static final long serialVersionUID = 4253814235314171195L;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
+
+@SerializableAs("I_Made_This_But_Also_Think_Is_Stupid")
+public final class Tick implements Comparable<Tick>, ConfigurationSerializable {
 	//-----Constants-----//
 	public final static long TICK = 1;
 	public final static long SECOND = 20;
@@ -23,48 +29,28 @@ public final class Tick extends Number implements Comparable<Tick> {
 	}
 	
 	//-----Public Methods-----//
-	@Override
-	public double doubleValue() {
-		return this.ticks;
-	}
-
-	@Override
-	public float floatValue() {
-		return this.ticks;
-	}
-
-	@Override
-	public int intValue() {
-		return (int) this.ticks;
-	}
-
-	@Override
-	public long longValue() {
-		return this.ticks;
-	}
-	
 	public long ticks() {
-		return this.longValue();
+		return this.ticks;
 	}
 	
 	public double seconds() {
-		return this.doubleValue() / SECOND;
+		return this.ticks() / SECOND;
 	}
 	
 	public double minutes() {
-		return this.doubleValue() / MINUTE;
+		return this.ticks() / MINUTE;
 	}
 	
 	public double hours() {
-		return this.doubleValue() / HOUR;
+		return this.ticks() / HOUR;
 	}
 	
 	public double days() {
-		return this.doubleValue() / DAY;
+		return this.ticks() / DAY;
 	}
 	
 	public double weeks() {
-		return this.doubleValue() / WEEK;
+		return this.ticks() / WEEK;
 	}
 	
 	//-----Utility Methods-----//
@@ -90,5 +76,16 @@ public final class Tick extends Number implements Comparable<Tick> {
 			return this.ticks == ((Tick) obj).ticks;
 		}
 		return false;
+	}
+
+	@Override
+	public Map<String, Object> serialize() {
+		Map<String, Object> result = new LinkedHashMap<>();
+		result.put("ticks", this.ticks);
+		return result;
+	}
+	
+	public Tick(Map<String, Object> args) {
+		this.ticks = (long) args.get("ticks");
 	}
 }

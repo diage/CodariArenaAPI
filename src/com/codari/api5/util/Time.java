@@ -1,9 +1,14 @@
 package com.codari.api5.util;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class Time implements Serializable {
-	private static final long serialVersionUID = 5769855300220316543L;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.configuration.serialization.SerializableAs;
+
+@SerializableAs("Stupid_Class")
+public class Time implements ConfigurationSerializable {
 	//-----Constants-----//
 	public final static Time NULL = new Time(0, 0, 0);
 	public final static Time MAX = new Time(0, 0, Long.MAX_VALUE);
@@ -57,5 +62,16 @@ public class Time implements Serializable {
 	@Override
 	public boolean equals(Object obj) {
 		return this.tick.equals(obj);
+	}
+
+	@Override
+	public Map<String, Object> serialize() {
+		Map<String, Object> result = new LinkedHashMap<>();
+		result.put("tick", this.tick);
+		return result;
+	}
+	
+	public Time(Map<String, Object> args) {
+		this.tick = (Tick) args.get("tick");
 	}
 }
