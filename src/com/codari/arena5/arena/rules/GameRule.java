@@ -46,13 +46,6 @@ public interface GameRule {
 	public boolean addWinCondition(WinCondition winCondition, Time time, boolean after); //DONE - PARTIALLY
 	
 	/**
-	 * Removes the provided win condition from the current selection of win conditions.
-	 * 
-	 * @param winCondition The win condition to remove. 
-	 */
-	public void removeWinCondition(WinCondition winCondition); //DONE - PARTIALLY
-	
-	/**
 	 * Set the duration of the match. Setting this more than once will overwrite the previous Match Duration.
 	 * 
 	 * @param time The time at which to end. 
@@ -73,13 +66,6 @@ public interface GameRule {
 	 * 
 	 */
 	public boolean addTimedAction(TimedAction action);
-	
-	/**
-	 * Removes the provided timed action from the current selection of timed actions.
-	 * 
-	 * @param timedAction The timed action to remove. 
-	 */
-	public void removeTimedAction(TimedAction action);
 	
 	/**
 	 * Check to see if a duration and at least one win condition have been set.
