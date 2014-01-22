@@ -124,6 +124,7 @@ public interface GameRule {
 	 * 
 	 * @return true if successful, false if it is an invalid roleDeclaration. 
 	 */
+	@Deprecated
 	public boolean addRoleDeclaration(RoleDeclaration roleDeclaration);
 	
 	/**
@@ -131,6 +132,7 @@ public interface GameRule {
 	 * 
 	 * @return The RoleDeclaration. 
 	 */
+	@Deprecated
 	public List<RoleDeclaration> getRoleDeclaration(); //DO NOT CONSIDER
 	
 	/**

@@ -1,9 +1,6 @@
 package com.codari.arena5.arena.rules.roledelegation;
 
 import java.io.Serializable;
-import java.util.Collection;
-
-import com.codari.arena5.objects.persistant.RoleSelectionObject;
 
 /**
  * Object to decide how to delegate roles to players for an Arena. 
@@ -26,7 +23,7 @@ public interface RoleDelegation extends Serializable {
 	 *  
 	 * @param roleSelectionObject The RoleSelectionObject to add. 
 	 */
-	public void addRoleSelectionObject(RoleSelectionObject roleSelectionObject);
+	//public void addRoleSelectionObject(RoleSelectionObject roleSelectionObject);
 	
 	/**
 	 * method to set the RoleDelegationType for this Arena. 
@@ -42,7 +39,7 @@ public interface RoleDelegation extends Serializable {
 	 * 
 	 * @return A collection of all RoleSelectionObjects. 
 	 */
-	public Collection<RoleSelectionObject> getRoleSelectionObjects();
+	//public Collection<RoleSelectionObject> getRoleSelectionObjects();
 	
 	/**
 	 * Method to verify if this is a valid RoleDelegation.
