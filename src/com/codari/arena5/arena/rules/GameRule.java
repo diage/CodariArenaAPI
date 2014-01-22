@@ -103,40 +103,6 @@ public interface GameRule {
 	 */
 	public Time getMatchDuration(); //DO NOT CONSIDER
 	
-	/**
-	 * Method to add a {@link RoleDeclaration} to the Game Rule. One must be added for the arena to be valid. 
-	 * 
-	 * @param roleDeclaration The declaration type to be added. 
-	 * 
-	 * @return true if successful, false if it is an invalid roleDeclaration. 
-	 */
-	@Deprecated
-	public boolean addRoleDeclaration(RoleDeclaration roleDeclaration);
-	
-	/**
-	 * Method to get the {@link RoleDeclaration} for this GameRule. 
-	 * 
-	 * @return The RoleDeclaration. 
-	 */
-	@Deprecated
-	public List<RoleDeclaration> getRoleDeclaration(); //DO NOT CONSIDER
-	
-	/**
-	 * Method to add a {@link RoleDelegation} to the Game Rule. One must be added for the arena to be valid. 
-	 * 
-	 * @param roleDelegation The delegation type to be added. 
-	 * 
-	 * @return true if successful, false if it is an invalid roleDelegation. 
-	 */
-	public boolean addRoleDelegation(RoleDelegation roleDelegation);
-	
-	/**
-	 * Method to get the {@link RoleDelegation} for this GameRule. 
-	 * 
-	 * @return The RoleDelegation. 
-	 */
-	public RoleDelegation getRoleDelegation(); //DO NOT CONSIDER
-	
 	public void setNumberOfTeams(byte numberOfTeams); //DONE
 	
 	public byte getNumberOfTeams(); //DO NOT CONSIDER
