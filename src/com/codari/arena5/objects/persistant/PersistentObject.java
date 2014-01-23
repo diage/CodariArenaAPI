@@ -1,6 +1,7 @@
 package com.codari.arena5.objects.persistant;
 
 import com.codari.arena5.objects.ArenaObject;
+import com.codari.arena5.players.combatants.Combatant;
 
 
 /**
@@ -14,5 +15,5 @@ public interface PersistentObject extends ArenaObject {
 	/**
 	 * Method to be called when this Object is interacted with, whether physically or through another object. 
 	 */
-	public void interact();
+	public void interact(Combatant combatant);
 }
