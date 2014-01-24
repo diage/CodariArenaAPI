@@ -33,7 +33,7 @@ public interface Arena extends Serializable {
 	
 	public GameRule getGameRule();
 	
-	public boolean start(Team... teams);
+	public void start(Team... teams);
 	
 	public void stop();
 	

@@ -16,4 +16,7 @@ public interface PersistentObject extends ArenaObject {
 	 * Method to be called when this Object is interacted with, whether physically or through another object. 
 	 */
 	public void interact(Combatant combatant);
+	
+	public void activate();
+
 }
