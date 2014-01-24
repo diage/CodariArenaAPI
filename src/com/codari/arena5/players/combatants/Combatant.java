@@ -79,7 +79,7 @@ public interface Combatant {
 	public boolean inArena();
 	
 	public boolean isHotbarActive();
-	public void setHotbarActibe(boolean active);
+	public void setHotbarActive(boolean active);
 	public boolean isHotbarOnCooldown();
 	public void setHotbarCooldown(long ticks);
 
