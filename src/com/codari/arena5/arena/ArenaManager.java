@@ -1,6 +1,7 @@
 package com.codari.arena5.arena;
 
 import java.io.File;
+import java.util.Collection;
 
 import org.bukkit.OfflinePlayer;
 
@@ -91,6 +92,8 @@ public interface ArenaManager {
 	public boolean submitRole(String arenaName, Role role);
 
 	public Role getExistingRole(String arenaName, String roleName);
+	
+	public Collection<Role> getExistingRoles(String arenaName);
 
 	public void clearRole(String arenaName, String roleName);
 
