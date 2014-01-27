@@ -85,7 +85,7 @@ public interface ArenaManager {
 	 *  
 	 * @return A reference to a clean {@link ArenaBuilder}.
 	 */
-	public ArenaBuilder getArenaBuider(GameRule gameRule) throws IllegalArgumentException;
+	public ArenaBuilder getArenaBuider(String name, GameRule gameRule) throws IllegalArgumentException;
 
 	public Role getNewRole(String name);
 
