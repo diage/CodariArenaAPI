@@ -1,6 +1,5 @@
 package com.codari.api5.util;
 
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
