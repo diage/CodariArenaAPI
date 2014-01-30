@@ -1,6 +1,5 @@
 package com.codari.arena5.arena;
 
-import java.io.File;
 import java.util.Collection;
 
 import org.bukkit.OfflinePlayer;
@@ -100,9 +99,4 @@ public interface ArenaManager {
 	public boolean addToQueue(String arenaName, Team team);
 	
 	public boolean removeFromQueue(Team team);
-	
-	public boolean saveArenaBuilder(String name);
-	
-	public boolean loadArenaBuilder(File file);
-
 }
