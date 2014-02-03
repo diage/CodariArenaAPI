@@ -1,8 +1,8 @@
 package com.codari.api5.attribute.modifier;
 
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import net.minecraft.util.org.apache.commons.lang3.builder.HashCodeBuilder;
+import net.minecraft.util.org.apache.commons.lang3.builder.ToStringBuilder;
+import net.minecraft.util.org.apache.commons.lang3.builder.ToStringStyle;
 
 public final class AttributeModifier implements Comparable<AttributeModifier> {
 	//-----Fields-----//

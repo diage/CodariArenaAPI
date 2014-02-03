@@ -4,8 +4,9 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.apache.commons.lang3.EnumUtils;
-import org.apache.commons.lang3.StringUtils;
+import net.minecraft.util.org.apache.commons.lang3.EnumUtils;
+import net.minecraft.util.org.apache.commons.lang3.StringUtils;
+
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import com.google.common.base.Function;

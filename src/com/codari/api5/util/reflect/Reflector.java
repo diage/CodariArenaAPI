@@ -7,9 +7,10 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.commons.lang3.ObjectUtils;
+import net.minecraft.util.org.apache.commons.lang3.ArrayUtils;
+import net.minecraft.util.org.apache.commons.lang3.ClassUtils;
+import net.minecraft.util.org.apache.commons.lang3.ObjectUtils;
+
 import org.bukkit.Bukkit;
 
 /**
