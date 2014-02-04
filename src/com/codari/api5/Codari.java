@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 
 import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.enchantment.EnchantmentManager;
-import com.codari.api5.itemdata.ItemDataManager;
+import com.codari.api5.item.CodariItemManager;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
@@ -41,7 +41,7 @@ public class Codari {
 		return CodariI.INSTANCE.getEnchantmentManager();
 	}
 	
-	public static ItemDataManager getItemDataManager() {
+	public static CodariItemManager getItemDataManager() {
 		return CodariI.INSTANCE.getItemDataManager();
 	}
 	

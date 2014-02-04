@@ -4,7 +4,7 @@ import org.bukkit.plugin.Plugin;
 
 import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.enchantment.EnchantmentManager;
-import com.codari.api5.itemdata.ItemDataManager;
+import com.codari.api5.item.CodariItemManager;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.arena5.Library;
 import com.codari.arena5.arena.ArenaManager;
@@ -43,6 +43,6 @@ public interface CodariI extends Plugin {
 	
 	public EnchantmentManager getEnchantmentManager();
 	
-	public ItemDataManager getItemDataManager();
+	public CodariItemManager getItemDataManager();
 
 }
