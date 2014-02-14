@@ -1,4 +1,4 @@
-package com.codari.api5.item;
+package com.codari.arena5.item;
 
 public interface CodariItemManager {
 	
