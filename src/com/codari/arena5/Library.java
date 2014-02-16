@@ -2,6 +2,7 @@ package com.codari.arena5;
 
 import com.codari.arena5.arena.rules.timedaction.TimedAction;
 import com.codari.arena5.arena.rules.wincondition.WinCondition;
+import com.codari.arena5.item.assets.ItemAsset;
 import com.codari.arena5.objects.ArenaObject;
 import com.codari.arena5.players.skills.Skill;
 
@@ -13,4 +14,6 @@ public interface Library {
 	public void registerArenaObject(Class<? extends ArenaObject> clazz);
 
 	public void registerSkill(Class<? extends Skill> clazz);
+	
+	public void registerItemAsset(Class<? extends ItemAsset> clazz);
 }
