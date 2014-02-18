@@ -1,5 +1,5 @@
 package com.codari.api5.attribute.modifier;
-
+//XXX does this need an interface?
 public class FixedModifierValue implements ModifierValue {
 	//-----Constants-----//
 	public static final FixedModifierValue ZERO = new FixedModifierValue(0);

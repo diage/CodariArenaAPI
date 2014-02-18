@@ -3,7 +3,7 @@ package com.codari.api5.attribute.modifier;
 import net.minecraft.util.org.apache.commons.lang3.builder.HashCodeBuilder;
 import net.minecraft.util.org.apache.commons.lang3.builder.ToStringBuilder;
 import net.minecraft.util.org.apache.commons.lang3.builder.ToStringStyle;
-
+//XXX Does this need an interface?
 public final class AttributeModifier implements Comparable<AttributeModifier> {
 	//-----Fields-----//
 	private final String modifierId;
