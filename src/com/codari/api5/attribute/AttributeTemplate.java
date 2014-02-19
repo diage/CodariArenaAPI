@@ -12,17 +12,17 @@ package com.codari.api5.attribute;
  */
 public interface AttributeTemplate {
 	/**
-	 * Gets the id of {@code this AttributeTemplate}. The id returned is a unique
+	 * Gets the id of this {@code AttributeTemplate}. The id returned is a unique
 	 * identifier for an {@code AttributeTemplate}.
 	 * 
-	 * @return a unique id for {@code this AttributeTemplate}
+	 * @return a unique id for this {@code AttributeTemplate}
 	 */
 	public String getId();
 	/**
 	 * Gets the name of this attribute. Unlike the id, the name is not unique however is
 	 * used to determine equality for an {@link Attribute}.
 	 * 
-	 * @return the name of {@code this AttributeTemplate}
+	 * @return the name of this {@code AttributeTemplate}
 	 */
 	public String getName();
 	public String getDescription();
