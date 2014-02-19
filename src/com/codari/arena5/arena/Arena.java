@@ -31,6 +31,7 @@ public interface Arena extends Serializable {
 	 */
 	public Map<String, Team> getTeams();
 	
+	//XXX everything below here probably doesn't need to be in the arena
 	public GameRule getGameRule();
 	
 	public void start(Team... teams);

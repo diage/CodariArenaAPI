@@ -6,7 +6,6 @@ import com.codari.api5.player.CodariPlayer;
 import com.codari.arena5.arena.Arena;
 import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
-import com.codari.arena5.players.teams.TeamColor;
 /**
  * In game representation of a player. This is how the {@link Arena} and any arena-related object will reference the player.
  * 

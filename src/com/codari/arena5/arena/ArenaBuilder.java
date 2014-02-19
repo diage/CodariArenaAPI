@@ -10,7 +10,7 @@ import com.codari.arena5.objects.persistant.ImmediatePersistentObject;
 import com.codari.arena5.objects.spawnable.FixedSpawnableObject;
 import com.codari.arena5.objects.spawnable.RandomSpawnableObject;
 
-/**
+/**XXX probably doesn't need to be in the API at all. 
  * The ArenaBuilder is the factory used for all {@link Arena}s.
  * 	The provided methods together help to formulate some Arena configuration. 
  * 
