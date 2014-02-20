@@ -23,6 +23,6 @@ public interface Role {
 	
 	public String getName();
 	public Role addSkill(Skill skill);
-	public Role swapRole(Role role);
+	public Role swapRole(Role role); //XXX This might need reworked.. perhaps pass in combatant?
 	public String getLink(String arenaObjectName);
 }
