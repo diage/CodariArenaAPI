@@ -1,12 +1,8 @@
 package com.codari.arena5.arena;
 
-import java.util.Collection;
-
 import org.bukkit.OfflinePlayer;
 
-import com.codari.arena5.arena.rules.GameRule;
 import com.codari.arena5.players.combatants.Combatant;
-import com.codari.arena5.players.role.Role;
 import com.codari.arena5.players.teams.Team;
 
 /**
@@ -38,16 +34,6 @@ public interface ArenaManager {
 	 */
 	public Combatant getCombatant(OfflinePlayer player);
 	
-	/**XXX probably doesn't need to be in this interface. 
-	 * Method to grab the team provided an {@link Arena} and a {@link TeamColor}.
-	 * 
-	 * @param arenaName The name of the Arena you want the team for. 
-	 * @param teamColor The color of the team you want within the provided Arena.
-	 * 
-	 * @return The requested team
-	 */
-	@Deprecated
-	public Team getTeam(String arenaName, String teamName);
 	/**
 	 * Method to get the {@Link Team} given a {@link Combatant}. 
 	 * 
@@ -66,38 +52,4 @@ public interface ArenaManager {
 	 * @return The requested {@link Arena}. 
 	 */
 	public Arena getArena(String name);
-	
-	/**XXX probably doesn't need to be in this interface. 
-	 * Returns the Arena associated with the {@link ArenaBuilder} which is passed in. The Arena in question will have
-	 * 	a name based off of the requestedName but is not gaurnteed to be identical. 
-	 * 
-	 * @param arenaBuilder The builder which has the configuration for the requested {@link Arena}
-	 * @param requestedName The name the new arena will be based off. If a duplicate name exists, this arena manager will use
-	 * 	the requested name as a base and adjust it to a unique name. 
-	 * 
-	 * @return The Arena which is built. Will return null if the ArenaBuilder is not properly built. 
-	 */
-	public Arena buildArena(String requestedName, ArenaBuilder arenaBuilder);
-	
-	/**XXX probably doesn't need to be in this interface. 
-	 * Method to get a new clean {@link ArenaBuilder}.
-	 *  
-	 * @return A reference to a clean {@link ArenaBuilder}.
-	 */
-	public ArenaBuilder getArenaBuider(String name, GameRule gameRule) throws IllegalArgumentException;
-
-	//XXX probably doesn't need to be in this interface. 
-	public Role getNewRole(String name);
-	//XXX probably doesn't need to be in this interface. 
-	public boolean submitRole(String arenaName, Role role);
-	//XXX probably doesn't need to be in this interface. 
-	public Role getExistingRole(String arenaName, String roleName);
-	//XXX probably doesn't need to be in this interface. 
-	public Collection<Role> getExistingRoles(String arenaName);
-	//XXX probably doesn't need to be in this interface. 
-	public void clearRole(String arenaName, String roleName);
-	//XXX probably doesn't need to be in this interface. 
-	public boolean addToQueue(String arenaName, Team team);
-	//XXX probably doesn't need to be in this interface. 
-	public boolean removeFromQueue(Team team);
 }

@@ -1,9 +1,10 @@
 package com.codari.arena5.arena;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Map;
 
-import com.codari.arena5.arena.rules.GameRule;
+import com.codari.arena5.arena.rules.wincondition.WinCondition;
 import com.codari.arena5.players.teams.Team;
 
 /**
@@ -31,12 +32,5 @@ public interface Arena extends Serializable {
 	 */
 	public Map<String, Team> getTeams();
 	
-	//XXX everything below here probably doesn't need to be in the arena
-	public GameRule getGameRule();
-	
-	public void start(Team... teams);
-	
-	public void stop();
-	
-	public boolean isMatchInProgress();
+	public Collection<WinCondition> getWinConditions(); 
 }

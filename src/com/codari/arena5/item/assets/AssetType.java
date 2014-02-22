@@ -5,5 +5,5 @@ public enum AssetType {
 	COMMAND,
 	SPELL,
 	EXPERIENCE,
-	STATUS
+	STATUS;
 }
