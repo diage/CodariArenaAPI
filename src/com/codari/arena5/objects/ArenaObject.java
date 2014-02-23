@@ -1,8 +1,10 @@
 package com.codari.arena5.objects;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import org.bukkit.Location;
+import org.bukkit.block.BlockState;
 
 /**
  * Any object that exists within an {@Link Arena}.
@@ -46,4 +48,6 @@ public interface ArenaObject extends Serializable {
 	
 	public String getName();
 	public Location getLocation();
+	
+	public Collection<BlockState> getAffectedBlocks();
 }

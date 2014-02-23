@@ -7,6 +7,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface ItemAssetName {
+public @interface ItemAssetInformation {
 	String name();
+	String[] links() default {};
 }
