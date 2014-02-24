@@ -1,8 +1,6 @@
 package com.codari.api5.asset;
 
-import org.bukkit.plugin.InvalidDescriptionException;
-
-public class InvalidAssetDescriptionFileException extends InvalidDescriptionException {
+public class InvalidAssetDescriptionFileException extends Exception {
 	private static final long serialVersionUID = -6103347025081605135L;
 	//-----Constructors-----//
 	public InvalidAssetDescriptionFileException() {
@@ -14,7 +12,7 @@ public class InvalidAssetDescriptionFileException extends InvalidDescriptionExce
 	}
 	
 	public InvalidAssetDescriptionFileException(Throwable cause, String message) {
-		super(cause, message);
+		super(message, cause);
 	}
 	
 	public InvalidAssetDescriptionFileException(Throwable cause) {
