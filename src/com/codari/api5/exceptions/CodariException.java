@@ -1,4 +1,4 @@
-package com.codari.api5;
+package com.codari.api5.exceptions;
 
 /**
  * Thrown when an error occurred within the codari plugin core structure

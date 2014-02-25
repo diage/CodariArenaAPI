@@ -1,5 +1,7 @@
 package com.codari.api5.attribute;
 
+import com.codari.api5.exceptions.InvalidAttributeException;
+
 /**
  * Represents a template for an {@link Attribute}. An instance of {@code AttributeTemplate}
  * contains all of the core information that any {@code Attribute} created by it share.

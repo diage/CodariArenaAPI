@@ -1,4 +1,4 @@
-package com.codari.arena5.arena.events;
+package com.codari.api5.events;
 
 import java.util.Collection;
 

@@ -12,6 +12,8 @@ import java.io.OutputStream;
 import org.bukkit.util.io.BukkitObjectInputStream;
 import org.bukkit.util.io.BukkitObjectOutputStream;
 
+import com.codari.api5.exceptions.CodariSerializationException;
+
 public final class CodariSerialization {
 	//-----Private Constructor-----//
 	private CodariSerialization(){}

@@ -1,4 +1,4 @@
-package com.codari.api5.io;
+package com.codari.api5.exceptions;
 
 public class CodariSerializationException extends RuntimeException {
 	private static final long serialVersionUID = -5870807561662421178L;

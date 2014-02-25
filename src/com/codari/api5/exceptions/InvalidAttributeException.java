@@ -1,4 +1,4 @@
-package com.codari.api5.attribute;
+package com.codari.api5.exceptions;
 
 public class InvalidAttributeException extends RuntimeException {
 	private static final long serialVersionUID = -8564030597627391380L;

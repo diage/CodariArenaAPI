@@ -1,4 +1,4 @@
-package com.codari.arena5.arena.events;
+package com.codari.api5.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;

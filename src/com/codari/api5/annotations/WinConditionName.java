@@ -1,4 +1,4 @@
-package com.codari.arena5.arena.rules.wincondition;
+package com.codari.api5.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
