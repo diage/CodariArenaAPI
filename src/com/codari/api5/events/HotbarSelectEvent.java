@@ -1,10 +1,11 @@
-package com.codari.arena5.players.hotbar;
+package com.codari.api5.events;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.bukkit.inventory.ItemStack;
 
 import com.codari.arena5.players.combatants.Combatant;
+import com.codari.arena5.players.hotbar.HotbarOption;
 
 public class HotbarSelectEvent extends Event {
 	//-----Static Fields-----//
