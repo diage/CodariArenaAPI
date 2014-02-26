@@ -2,6 +2,7 @@ package com.codari.api5.asset;
 
 import java.io.InputStream;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,8 +36,10 @@ public final class AssetDescriptionFile {
 	private final List<String> assets;
 	
 	//-----Constructor-----//
-	private AssetDescriptionFile(Map<?,?> args) throws InvalidAssetDescriptionFileException {
-		
+	private AssetDescriptionFile(Map<?,?> args) /*throws InvalidAssetDescriptionFileException */{
+		this.assets = new ArrayList<>();
+		this.name = "";
+		this.version = "";
 	}
 	
 	//-----Methods-----//
