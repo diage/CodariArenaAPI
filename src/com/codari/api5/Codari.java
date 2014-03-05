@@ -3,6 +3,7 @@ package com.codari.api5;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import com.codari.api5.asset.AssetLybrary;
 import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.arena5.Library;
@@ -45,5 +46,9 @@ public class Codari {
 	
 	public static Player getPlayer(OfflinePlayer player) {
 		return getPlayer(player.getName());
+	}
+	
+	public static AssetLybrary getAssetLybrary() {
+		return CodariI.INSTANCE.getAssetLybrary();
 	}
 }

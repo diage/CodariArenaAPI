@@ -2,6 +2,7 @@ package com.codari.api5;
 
 import org.bukkit.plugin.Plugin;
 
+import com.codari.api5.asset.AssetLybrary;
 import com.codari.api5.attribute.AttributeFactory;
 import com.codari.api5.player.CodariPlayerManager;
 import com.codari.arena5.Library;
@@ -23,6 +24,8 @@ public interface CodariI extends Plugin {
 	
 	//-----Methods-----//
 	public CodariPlayerManager getCodariPlayerManager();
+	
+	public AssetLybrary getAssetLybrary();
 	
 	/**
 	 * Gets the Arena Manager of the plugin.

@@ -29,4 +29,10 @@ public enum AssetType {
 	public Class<? extends Asset> getBaseClass() {
 		return this.baseClass;
 	}
+	
+	//-----Utility Methods-----//
+	@Override
+	public String toString() {
+		return super.name().toLowerCase();
+	}
 }
