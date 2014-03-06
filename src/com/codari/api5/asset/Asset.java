@@ -1,5 +1,7 @@
 package com.codari.api5.asset;
 
+import com.codari.api5.asset.type.AssetType;
+
 public abstract class Asset {
 	//-----Fields-----//
 	private AssetEntry entry;

@@ -1,4 +1,6 @@
-package com.codari.api5.asset;
+package com.codari.api5.asset.type;
+
+import com.codari.api5.asset.Asset;
 
 public enum AssetType {
 	//-----Enumerations-----//
