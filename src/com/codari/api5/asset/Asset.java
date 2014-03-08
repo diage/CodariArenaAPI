@@ -24,4 +24,10 @@ public abstract class Asset {
 	public final String getFullName() {
 		return this.entry.getFullName();
 	}
+	
+	//-----Utility Methods-----//
+	@Override
+	public String toString() {
+		return "Asset[" + this.getFullName() + "]";
+	}
 }
