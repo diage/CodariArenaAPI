@@ -1,6 +1,5 @@
 package com.codari.arena5.objects;
 
-import java.io.Serializable;
 import java.util.Collection;
 
 import org.bukkit.Location;
@@ -21,7 +20,7 @@ import org.bukkit.block.BlockState;
  * @author Ryan
  *
  */
-public interface ArenaObject extends Serializable {
+public interface ArenaObject {
 	/**
 	 * Method to allow the object to be seen but not interacted with. 
 	 * 	This is useful for when the arena is being made and you are interested in where 

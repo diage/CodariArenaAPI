@@ -1,6 +1,5 @@
 package com.codari.api5.asset;
 
-import com.codari.api5.asset.type.AssetType;
 
 public abstract class Asset {
 	//-----Fields-----//
@@ -10,7 +9,7 @@ public abstract class Asset {
 	protected Asset() {}
 	
 	//-----Methods-----//
-	public final String getName() {
+	public final String getAssetName() {
 		return this.entry.getName();
 	}
 	

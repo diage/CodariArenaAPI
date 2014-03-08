@@ -1,7 +1,5 @@
 package com.codari.arena5.arena.rules.timedaction;
 
-import java.io.Serializable;
-
 import com.codari.api5.util.Time;
 
 /**
@@ -12,8 +10,7 @@ import com.codari.api5.util.Time;
  * @author Ryan
  *
  */
-public abstract class TimedAction implements Runnable, Serializable {
-	private static final long serialVersionUID = -8591492536915954659L;
+public abstract class TimedAction implements ITimedAction {
 	//-----Fields-----//
 	private Time start, delay, period;
 	

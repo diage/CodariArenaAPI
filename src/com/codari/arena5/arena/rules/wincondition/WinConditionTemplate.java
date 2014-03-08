@@ -4,9 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
 
 import com.codari.api5.CodariI;
+import com.codari.arena5.assets.WinConditionAsset;
 
-public abstract class WinConditionTemplate implements WinCondition {
-	private static final long serialVersionUID = 8677900739585198742L;
+public abstract class WinConditionTemplate extends WinConditionAsset {
 	//-----Fields-----//
 	protected boolean conditionMet;
 	
