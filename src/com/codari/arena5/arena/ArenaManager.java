@@ -26,6 +26,9 @@ public interface ArenaManager {
 	 */
 	public Combatant getCombatant(UUID uuid);
 	
+	@Deprecated
+	public Combatant getCombatant(String name);
+	
 	/**
 	 * Method to grab a {@link Combatant} from an {@link OfflinePlayer} reference. 
 	 * 
