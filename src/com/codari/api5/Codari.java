@@ -1,5 +1,7 @@
 package com.codari.api5;
 
+import java.util.UUID;
+
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -40,12 +42,12 @@ public class Codari {
 		return CodariI.INSTANCE.getAttributeFactory();
 	}
 	
-	public static Player getPlayer(String name) {
-		return CodariI.INSTANCE.getCodariPlayerManager().getCodariPlayer(name).getPlayer();
+	public static Player getPlayer(UUID uuid) {
+		return CodariI.INSTANCE.getCodariPlayerManager().getCodariPlayer(uuid).getPlayer();
 	}
 	
 	public static Player getPlayer(OfflinePlayer player) {
-		return getPlayer(player.getName());
+		return getPlayer(player.getUniqueId());
 	}
 	
 	public static AssetLybrary getAssetLybrary() {

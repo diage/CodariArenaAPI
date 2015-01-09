@@ -1,5 +1,7 @@
 package com.codari.arena5.arena;
 
+import java.util.UUID;
+
 import org.bukkit.OfflinePlayer;
 
 import com.codari.arena5.players.combatants.Combatant;
@@ -22,7 +24,7 @@ public interface ArenaManager {
 	 *  
 	 * @return The requested {@link Combatant}
 	 */
-	public Combatant getCombatant(String name);
+	public Combatant getCombatant(UUID uuid);
 	
 	/**
 	 * Method to grab a {@link Combatant} from an {@link OfflinePlayer} reference. 
