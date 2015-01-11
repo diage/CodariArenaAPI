@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import java.util.Objects;
 
 import net.minecraft.util.org.apache.commons.lang3.ArrayUtils;
 import net.minecraft.util.org.apache.commons.lang3.ClassUtils;
@@ -495,11 +496,11 @@ public final class Reflector {
 	
 	@Override
 	public int hashCode() {
-		return ObjectUtils.hashCode(this.getHandle());
+		return Objects.hashCode(this.getHandle());
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
-		return ObjectUtils.equals(this.getHandle(), obj);
+		return Objects.equals(this.getHandle(), obj);
 	}
 }
